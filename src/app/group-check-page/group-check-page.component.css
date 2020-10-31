@@ -1,0 +1,141 @@
+.container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.content {
+  margin: 0 260px;
+  padding-top: 35px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #454545;
+}
+
+.description {
+  margin-top: 14px;
+  font-size: 18px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #707070;
+}
+
+.tiles {
+  margin: 0 -21px;
+  margin-top: 27px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn-label {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #0088ff;
+  cursor: pointer;
+}
+
+.btn-label img {
+  margin-right: 6px;
+}
+
+.tables {
+  position: relative;
+}
+
+.tables table {
+  border: solid 2px #efefef;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 27px;
+}
+
+.tables table .header .title,
+.tables table .header .description {
+  background-color: #efefef;
+  padding: 6px 14px;
+  padding-bottom: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #454545;
+}
+
+.tables table .header .title {
+  text-align: left;
+  white-space: pre;
+}
+
+.tables table .header .description {
+  text-align: right;
+  white-space: pre;
+}
+
+.tables table .item .val {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8e8e8e;
+  text-align: center;
+  white-space: pre;
+}
+
+.tables table .item .status {
+  padding-left: 4px;
+  padding-right: 30px;
+}
+
+.tables table .item .name {
+  width: 100%;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #454545;
+}
+
+.tables table .item.add {
+  cursor: pointer;
+}
+
+.tables table .item.add .name {
+  padding: 8px 0;
+  color: #0088ff;
+}
+
+.tables table .item .label {
+  position: relative;
+  width: 100%;
+  padding: 8px 0;
+  text-align: right;
+  padding-right: 8px;
+}
+
+.tables table .item:not(:last-of-type) {
+  border-bottom: solid 1px #efefef;
+}

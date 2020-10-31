@@ -10,11 +10,13 @@ import { CourseTilesTileComponent } from './course-tiles-tile/course-tiles-tile.
 import { GroupTilesPageComponent } from './group-tiles-page/group-tiles-page.component';
 import { GroupTilesTileComponent } from './group-tiles-tile/group-tiles-tile.component';
 import { GroupOverviewPageComponent } from './group-overview-page/group-overview-page.component';
+import { GroupCheckPageComponent } from './group-check-page/group-check-page.component';
 
 const appRoutes: Routes = [
   { path: 'teach', component: CourseTilesPageComponent},
   { path: 'teach/group', component: GroupTilesPageComponent},
   { path: 'teach/group-overview', component: GroupOverviewPageComponent},
+  { path: 'teach/group-check', component: GroupCheckPageComponent},
 ];
 
 @NgModule({
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
     CourseTilesTileComponent,
     GroupTilesPageComponent,
     GroupTilesTileComponent,
-    GroupOverviewPageComponent
+    GroupOverviewPageComponent,
+    GroupCheckPageComponent
   ],
   imports: [
     BrowserModule,
