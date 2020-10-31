@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CourseService } from '../services/Course/course.service';
 
 @Component({
   selector: 'app-course-tiles-tile',
@@ -7,13 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CourseTilesTileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private courseService: CourseService) { }
 
   @Input() colorVariant : number;
 
   ngOnInit(): void {
-     console.log(this.colorVariant);
-     
+    
   }
 
 }

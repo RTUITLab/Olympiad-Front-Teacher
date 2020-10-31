@@ -28,8 +28,31 @@ export class CourseService {
         name: 'fghj',
         groupCount: '3'
       });
-      resolve(a)
+      resolve(a);
     })
     //return this.http.get<Array<Course>>(Api.getCoursesList(), this.usersState.authOptions).toPromise();
+  }
+
+  public getCourse(id: string): Promise<Course> {
+    return new Promise<Course>((resolve, reject) => {
+      let a = new Array<Course>();
+      a.push({
+        id: '12345',
+        name: 'qwer',
+        groupCount: '2'
+      });
+      a.push({
+        id: '34567',
+        name: 'dfg',
+        groupCount: '4'
+      });
+      a.push({
+        id: '2345',
+        name: 'fghj',
+        groupCount: '3'
+      });
+      resolve(a.find(C => C.id === id));
+    })
+    //return this.http.get<Course>(Api.getCourse(id), this.usersState.authOptions).toPromise();
   }
 }
