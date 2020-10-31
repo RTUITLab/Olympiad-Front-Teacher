@@ -4,3 +4,13 @@ body {
     user-select: none;
     font-family: GillSans;
 }
+
+
+.ic-plus {
+    content: url("src/assets/svg/plus.svg");
+    width: 20px !important;
+    height: 20px !important;
+    display: inline;
+    position: relative;
+    bottom: -0.2em;
+}

@@ -7,9 +7,12 @@ import { CourseTilesPageComponent } from './course-tiles-page/course-tiles-page.
 import { GeneralHeaderComponent } from './general-header/general-header.component';
 import { GeneralTopbarComponent } from './general-topbar/general-topbar.component';
 import { CourseTilesTileComponent } from './course-tiles-tile/course-tiles-tile.component';
+import { GroupTilesPageComponent } from './group-tiles-page/group-tiles-page.component';
+import { GroupTilesTileComponent } from './group-tiles-tile/group-tiles-tile.component';
 
 const appRoutes: Routes = [
   { path: '', component: CourseTilesPageComponent},
+  { path: 'group', component: GroupTilesPageComponent},
 ];
 
 @NgModule({
@@ -18,7 +21,9 @@ const appRoutes: Routes = [
     CourseTilesPageComponent,
     GeneralHeaderComponent,
     GeneralTopbarComponent,
-    CourseTilesTileComponent
+    CourseTilesTileComponent,
+    GroupTilesPageComponent,
+    GroupTilesTileComponent
   ],
   imports: [
     BrowserModule,

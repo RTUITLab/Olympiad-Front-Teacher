@@ -1,0 +1,66 @@
+.container {
+    width: 304px;
+    height: 175px;
+    margin: 0 21px;
+    margin-bottom: 44px;
+    position: relative;
+    box-shadow: 0 4px 10px 0 rgba(131, 131, 131, 0.5);
+    padding-top: 22px;
+    padding-left: 16px;
+}
+
+.container.var0 {
+    background-image: linear-gradient(to left, #9e7fff, #fe7fac);
+}
+.container.var1 {
+    background-image: linear-gradient(to left, #83fe9a, #fec17f);
+}
+.container.var2 {
+    background-image: linear-gradient(to left, #7fb9fe, #c2fe83);
+}
+.container.var3 {
+    background-image: linear-gradient(to left, #7ec4ff, #7effcf);
+}
+
+.bg {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background-image: url("../../assets/svg/lines.svg");
+}
+
+.title {
+  text-shadow: 0 2px 4px rgba(77, 2, 75, 0.86);
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.description {
+  margin-top: 6px;
+  text-shadow: 0 2px 4px rgba(49, 0, 47, 0.97);
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 31px;
+    left: 16px;
+    text-shadow: 0 2px 4px rgba(49, 0, 47, 0.97);
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}

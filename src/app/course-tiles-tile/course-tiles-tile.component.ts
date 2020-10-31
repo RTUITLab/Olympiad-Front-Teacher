@@ -12,7 +12,7 @@ export class CourseTilesTileComponent implements OnInit {
   @Input() colorVariant : number;
 
   ngOnInit(): void {
-     console.log(this.colorVariant);
+     
      
   }
 
