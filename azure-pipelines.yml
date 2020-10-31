@@ -21,7 +21,13 @@ stages:
       displayName: build to deploy folder
       inputs:
         command: 'custom'
-        customCommand: 'run buildToDeploy'
+        customCommand: 'run build'
+    - task: CopyFiles@2
+      displayName: copy dist to docker artifact
+      inputs:
+        SourceFolder: 'dist/Olympiad-Front-Teacher'
+        Contents: '**'
+        TargetFolder: 'deploy/olympiad-front-teacher-build'
     - publish: deploy
       artifact: olympiad-front-teacher-pack
 - stage: dockerImage
