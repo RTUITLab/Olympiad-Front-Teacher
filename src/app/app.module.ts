@@ -9,7 +9,7 @@ import { GeneralTopbarComponent } from './general-topbar/general-topbar.componen
 import { CourseTilesTileComponent } from './course-tiles-tile/course-tiles-tile.component';
 
 const appRoutes: Routes = [
-  { path: '', component: CourseTilesPageComponent},
+  { path: 'teach', component: CourseTilesPageComponent},
 ];
 
 @NgModule({
