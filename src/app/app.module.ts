@@ -9,10 +9,12 @@ import { GeneralTopbarComponent } from './general-topbar/general-topbar.componen
 import { CourseTilesTileComponent } from './course-tiles-tile/course-tiles-tile.component';
 import { GroupTilesPageComponent } from './group-tiles-page/group-tiles-page.component';
 import { GroupTilesTileComponent } from './group-tiles-tile/group-tiles-tile.component';
+import { GroupOverviewPageComponent } from './group-overview-page/group-overview-page.component';
 
 const appRoutes: Routes = [
-  { path: '', component: CourseTilesPageComponent},
-  { path: 'group', component: GroupTilesPageComponent},
+  { path: 'teach', component: CourseTilesPageComponent},
+  { path: 'teach/group', component: GroupTilesPageComponent},
+  { path: 'teach/group-overview', component: GroupOverviewPageComponent},
 ];
 
 @NgModule({
@@ -23,7 +25,8 @@ const appRoutes: Routes = [
     GeneralTopbarComponent,
     CourseTilesTileComponent,
     GroupTilesPageComponent,
-    GroupTilesTileComponent
+    GroupTilesTileComponent,
+    GroupOverviewPageComponent
   ],
   imports: [
     BrowserModule,

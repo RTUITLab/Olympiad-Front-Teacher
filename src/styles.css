@@ -14,3 +14,38 @@ body {
     position: relative;
     bottom: -0.2em;
 }
+
+.ic-checked {
+    content: url("src/assets/svg/checked.svg");
+    width: 20px !important;
+    height: 20px !important;
+    display: inline;
+    position: relative;
+    bottom: -0.2em;
+}
+
+.ic-false {
+    content: url("src/assets/svg/false.svg");
+    width: 20px !important;
+    height: 20px !important;
+    display: inline;
+    position: relative;
+    bottom: -0.2em;
+}
+
+.ic-circle-green {
+    content: url("src/assets/svg/circle_green.svg");
+    width: 20px !important;
+    height: 20px !important;
+    display: inline;
+    position: relative;
+    bottom: -0.2em;
+}
+.ic-circle-grey {
+    content: url("src/assets/svg/circle_grey.svg");
+    width: 20px !important;
+    height: 20px !important;
+    display: inline;
+    position: relative;
+    bottom: -0.2em;
+}
