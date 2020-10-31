@@ -1,51 +1,108 @@
 body {
-    padding: 0;
-    margin: 0;
-    user-select: none;
-    font-family: GillSans;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  font-family: GillSans;
 }
 
+input,
+textarea,
+select {
+  appearance: none;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  outline: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.ic-close {
+  content: url("src/assets/svg/false.svg");
+  width: 20px !important;
+  height: 20px !important;
+  display: inline;
+  position: relative;
+  bottom: -0.2em;
+  filter: invert(100%);
+}
 
 .ic-plus {
-    content: url("src/assets/svg/plus.svg");
-    width: 20px !important;
-    height: 20px !important;
-    display: inline;
-    position: relative;
-    bottom: -0.2em;
+  content: url("src/assets/svg/plus.svg");
+  width: 20px !important;
+  height: 20px !important;
+  display: inline;
+  position: relative;
+  bottom: -0.2em;
+}
+
+.ic-minus {
+  content: url("src/assets/svg/minus_red.svg");
+  width: 20px !important;
+  height: 20px !important;
+  display: inline;
+  position: relative;
+  bottom: -0.2em;
+}
+
+.ic-upload {
+  content: url("src/assets/svg/download.svg");
+  width: 20px !important;
+  height: 20px !important;
+  display: inline;
+  position: relative;
+  bottom: -0.2em;
+}
+
+.ic-big-upload {
+  content: url("src/assets/svg/download.svg");
+  width: 27px !important;
+  height: 27px !important;
+  display: inline;
+  position: relative;
+  filter: invert(100%);
 }
 
 .ic-checked {
-    content: url("src/assets/svg/checked.svg");
-    width: 20px !important;
-    height: 20px !important;
-    display: inline;
-    position: relative;
-    bottom: -0.2em;
+  content: url("src/assets/svg/checked.svg");
+  width: 20px !important;
+  height: 20px !important;
+  display: inline;
+  position: relative;
+  bottom: -0.2em;
 }
 
 .ic-false {
-    content: url("src/assets/svg/false.svg");
-    width: 20px !important;
-    height: 20px !important;
-    display: inline;
-    position: relative;
-    bottom: -0.2em;
+  content: url("src/assets/svg/false.svg");
+  width: 20px !important;
+  height: 20px !important;
+  display: inline;
+  position: relative;
+  bottom: -0.2em;
 }
 
 .ic-circle-green {
-    content: url("src/assets/svg/circle_green.svg");
-    width: 20px !important;
-    height: 20px !important;
-    display: inline;
-    position: relative;
-    bottom: -0.2em;
+  content: url("src/assets/svg/circle_green.svg");
+  width: 20px !important;
+  height: 20px !important;
+  display: inline;
+  position: relative;
+  bottom: -0.2em;
 }
 .ic-circle-grey {
-    content: url("src/assets/svg/circle_grey.svg");
-    width: 20px !important;
-    height: 20px !important;
-    display: inline;
-    position: relative;
-    bottom: -0.2em;
+  content: url("src/assets/svg/circle_grey.svg");
+  width: 20px !important;
+  height: 20px !important;
+  display: inline;
+  position: relative;
+  bottom: -0.2em;
 }
