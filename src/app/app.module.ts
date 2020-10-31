@@ -12,7 +12,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './services/AuthGuard/auth-guard.service';
 
 const appRoutes: Routes = [
+<<<<<<< HEAD
   { path: 'teach', component: CourseTilesPageComponent, canActivate: [AuthGuardService]},
+=======
+  { path: 'teach', component: CourseTilesPageComponent},
+>>>>>>> dev
 ];
 
 @NgModule({
