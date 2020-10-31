@@ -7,9 +7,12 @@ import { CourseTilesPageComponent } from './course-tiles-page/course-tiles-page.
 import { GeneralHeaderComponent } from './general-header/general-header.component';
 import { GeneralTopbarComponent } from './general-topbar/general-topbar.component';
 import { CourseTilesTileComponent } from './course-tiles-tile/course-tiles-tile.component';
+import { UserStateService } from './services/User/user-state.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthGuardService } from './services/AuthGuard/auth-guard.service';
 
 const appRoutes: Routes = [
-  { path: 'teach', component: CourseTilesPageComponent},
+  { path: 'teach', component: CourseTilesPageComponent, canActivate: [AuthGuardService]},
 ];
 
 @NgModule({
@@ -22,9 +25,13 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    UserStateService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
