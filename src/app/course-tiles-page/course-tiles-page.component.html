@@ -7,7 +7,7 @@
             Здесь располагаются курсы, которые вы ведете.
         </div>
         <div class="tiles">
-            <app-course-tiles-tile *ngFor="let item of [0,1,2,3,4,5,6,7], let i = index" [colorVariant]="i"></app-course-tiles-tile>
+            <app-course-tiles-tile *ngFor="let course of courses; let i = index" [colorVariant]="i"></app-course-tiles-tile>
         </div>
     </div>
 </div>

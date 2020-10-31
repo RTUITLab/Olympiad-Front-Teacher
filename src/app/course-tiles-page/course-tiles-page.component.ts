@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Course } from '../models/Course';
+import { CourseService } from '../services/Course/course.service';
 
 @Component({
   selector: 'app-course-tiles-page',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course-tiles-page.component.css']
 })
 export class CourseTilesPageComponent implements OnInit {
+  courses?: Array<Course>;
 
-  constructor() { }
+  constructor(private courseServise: CourseService) { }
 
   ngOnInit(): void {
+    this.courseServise.getCoursesList().then(courses => {
+      this.courses = courses;
+    })
   }
-
 }
