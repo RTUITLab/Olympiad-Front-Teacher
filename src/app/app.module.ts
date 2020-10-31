@@ -12,13 +12,15 @@ import { GroupTilesTileComponent } from './group-tiles-tile/group-tiles-tile.com
 import { GroupOverviewPageComponent } from './group-overview-page/group-overview-page.component';
 import { GroupCheckPageComponent } from './group-check-page/group-check-page.component';
 import { AddTaskPageComponent } from './add-task-page/add-task-page.component';
+import { AddGroupPageComponent } from './add-group-page/add-group-page.component';
 
 const appRoutes: Routes = [
   { path: 'teach', component: CourseTilesPageComponent},
   { path: 'teach/group', component: GroupTilesPageComponent},
   { path: 'teach/group-overview', component: GroupOverviewPageComponent},
   { path: 'teach/group-check', component: GroupCheckPageComponent},
-  { path: 'teach/add-task', component: AddTaskPageComponent}
+  { path: 'teach/add-task', component: AddTaskPageComponent},
+  { path: 'teach/add-group', component: AddGroupPageComponent}
 ];
 
 @NgModule({
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     GroupTilesTileComponent,
     GroupOverviewPageComponent,
     GroupCheckPageComponent,
-    AddTaskPageComponent
+    AddTaskPageComponent,
+    AddGroupPageComponent
   ],
   imports: [
     BrowserModule,
