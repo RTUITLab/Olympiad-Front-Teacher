@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserStateService } from '../services/User/user-state.service';
 
 @Component({
   selector: 'app-general-topbar',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GeneralTopbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userState: UserStateService) { }
 
   ngOnInit(): void {
   }
