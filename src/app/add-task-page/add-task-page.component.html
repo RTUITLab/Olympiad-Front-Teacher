@@ -1,0 +1,190 @@
+<div class="containter">
+    <div class="content">
+        <div class="title">
+            Добавление задания в тему Структура данных «Очередь»
+        </div>
+
+        <div class="item">
+            <div class="header">
+                Введите название задачи
+            </div>
+            <div class="item-content">
+                <input class="input" placeholder="Как называется задача" type="text">
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="header">
+                Введите описание задачи
+            </div>
+            <div class="item-content">
+                TODO editor
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="header">
+                Добавить тестовые данные
+            </div>
+            <div class="item-content">
+                <div class="btns">
+                    <div class="btn">
+                        <img class="ic-plus"> Добавить набор
+                    </div>
+                    <div class="btn">
+                        <img class="ic-plus"> Добавить чекер
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="header btn">
+                <img class="ic-minus"> Набор 1
+            </div>
+            <div class="item-content">
+                <div class="inputs">
+                    <input class="input" placeholder="Входные данные" type="text">
+                    <input class="input" placeholder="Выходные данные" type="text">
+                    <input class="input no-grow" placeholder="Баллы" type="text">
+                </div>                
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="header btn">
+                <img class="ic-minus"> Чекер 1
+            </div>
+            <div class="item-content">
+                <div class="inputs"> 
+                    <div class="file">
+                        <input class="input" readonly placeholder="Выберите файл..." type="text">
+                        <input class="file-input" id="file-input1" type="file" name="file" multiple>
+                        <label for="file-input1">
+                            <div class="inner">
+                                <img class="ic-big-upload">
+                            </div>
+                        </label>  
+                    </div>
+                    <input class="input no-grow" placeholder="Баллы" type="text">
+                </div>                
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="header">
+                Назначить задачу конкретному ученику
+            </div>
+            <div class="description">
+                Выберите учеников, которым будет назначена задача. Оставьте пустым для назначения всей группе.
+            </div>
+            <div class="item-content">
+                <input class="input" placeholder="Начните набирать имя ученика..." type="text">
+
+                
+            </div>
+
+            <div class="omni-selected">
+                <div *ngFor="let item of [1,2,3,4,5]" class="element">
+                    <div class="avatar">
+                        <img src="../../assets/jpg/noavatar.jpg">
+                    </div>
+                    <div class="label">
+                        Вася Пупкин
+                    </div>
+                    <div class="btn"><img class="ic-close"></div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="header">
+                Выберите доступные языки
+            </div>
+            <div class="item-content">
+                <div class="checkboxes">
+
+                    <div class="checkbox">
+                        <div class="box">
+                            <input id="check-input1" type="checkbox" name="check" value="check1">
+                            <label for="check-input1"></label>
+                        </div>
+                        <div class="label">
+                            PHP
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <div class="box">
+                            <input id="check-input2" type="checkbox" name="check" value="check1">
+                            <label for="check-input2"></label>
+                        </div>
+                        <div class="label">
+                            PHP
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <div class="box">
+                            <input id="check-input3" type="checkbox" name="check" value="check1">
+                            <label for="check-input3"></label>
+                        </div>
+                        <div class="label">
+                            PHP
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <div class="box">
+                            <input id="check-input4" type="checkbox" name="check" value="check1">
+                            <label for="check-input4"></label>
+                        </div>
+                        <div class="label">
+                            PHP
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <div class="box">
+                            <input id="check-input5" type="checkbox" name="check" value="check1">
+                            <label for="check-input5"></label>
+                        </div>
+                        <div class="label">
+                            PHP
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <div class="split">
+            <div class="item">
+                <div class="header">
+                    Ограничение по времени
+                </div>
+                <div class="description">
+                    Доступное время исполнения программы
+                </div>
+                <div class="item-content">
+                    <input class="input" placeholder="Например, 3 сек" type="text">
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="header">
+                    Ограничение по памяти
+                </div>
+                <div class="description">
+                    Доступная программе память
+                </div>
+                <div class="item-content">
+                    <input class="input" placeholder="Например, 32 Мб" type="text">
+                </div>
+            </div>
+        </div>
+
+        <div class="item-btn">
+            Сохранить задачу
+        </div>
+
+    </div>
+</div>
