@@ -18,12 +18,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './services/AuthGuard/auth-guard.service';
 
 const appRoutes: Routes = [
-  { path: 'teach', component: CourseTilesPageComponent},
-  { path: 'teach/group', component: GroupTilesPageComponent},
-  { path: 'teach/group-overview', component: GroupOverviewPageComponent},
-  { path: 'teach/group-check', component: GroupCheckPageComponent},
-  { path: 'teach/add-task', component: AddTaskPageComponent},
-  { path: 'teach/add-group', component: AddGroupPageComponent}
+  { path: 'teach', component: CourseTilesPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/group', component: GroupTilesPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/group-overview', component: GroupOverviewPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/group-check', component: GroupCheckPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/add-task', component: AddTaskPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/add-group', component: AddGroupPageComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({
