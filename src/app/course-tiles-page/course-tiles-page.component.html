@@ -1,0 +1,13 @@
+<div class="containter">
+    <div class="content">
+        <div class="title">
+            Мои курсы
+        </div>
+        <div class="description">
+            Здесь располагаются курсы, которые вы ведете.
+        </div>
+        <div class="tiles">
+            <app-course-tiles-tile *ngFor="let item of [0,1,2,3]" [colorVariant]="item"></app-course-tiles-tile>
+        </div>
+    </div>
+</div>
