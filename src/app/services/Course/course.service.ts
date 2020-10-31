@@ -11,26 +11,7 @@ export class CourseService {
   constructor(private http: HttpClient, private usersState: UserStateService) { }
 
   public getCoursesList(): Promise<Array<Course>> {
-    return new Promise<Array<Course>>((resolve, reject) => {
-      let a = new Array<Course>();
-      a.push({
-        id: '12345',
-        name: 'qwer',
-        groupCount: '2'
-      });
-      a.push({
-        id: '34567',
-        name: 'dfg',
-        groupCount: '4'
-      });
-      a.push({
-        id: '2345',
-        name: 'fghj',
-        groupCount: '3'
-      });
-      resolve(a);
-    })
-    //return this.http.get<Array<Course>>(Api.getCoursesList(), this.usersState.authOptions).toPromise();
+    return this.http.get<Array<Course>>(Api.getCoursesList(), this.usersState.authOptions).toPromise();
   }
 
   public getCourse(id: string): Promise<Course> {
@@ -38,17 +19,17 @@ export class CourseService {
       let a = new Array<Course>();
       a.push({
         id: '12345',
-        name: 'qwer',
+        title: 'qwer',
         groupCount: '2'
       });
       a.push({
         id: '34567',
-        name: 'dfg',
+        title: 'dfg',
         groupCount: '4'
       });
       a.push({
         id: '2345',
-        name: 'fghj',
+        title: 'fghj',
         groupCount: '3'
       });
       resolve(a.find(C => C.id === id));

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Course } from '../models/Course';
 import { CourseService } from '../services/Course/course.service';
 
 @Component({
@@ -11,9 +12,9 @@ export class CourseTilesTileComponent implements OnInit {
   constructor(private courseService: CourseService) { }
 
   @Input() colorVariant : number;
+  @Input() course : Course;
 
   ngOnInit(): void {
-    
   }
 
 }

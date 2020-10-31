@@ -16,10 +16,12 @@ import { AddGroupPageComponent } from './add-group-page/add-group-page.component
 import { UserStateService } from './services/User/user-state.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './services/AuthGuard/auth-guard.service';
+import { CourseService } from './services/Course/course.service';
+import { GroupService } from './services/Group/group.service';
 
 const appRoutes: Routes = [
   { path: 'teach', component: CourseTilesPageComponent, canActivate: [AuthGuardService]},
-  { path: 'teach/group', component: GroupTilesPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/course/:id', component: GroupTilesPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/group-overview', component: GroupOverviewPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/group-check', component: GroupCheckPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-task', component: AddTaskPageComponent, canActivate: [AuthGuardService]},
@@ -47,7 +49,9 @@ const appRoutes: Routes = [
   ],
   providers: [
     UserStateService,
-    AuthGuardService
+    AuthGuardService,
+    CourseService,
+    GroupService
   ],
   bootstrap: [AppComponent]
 })

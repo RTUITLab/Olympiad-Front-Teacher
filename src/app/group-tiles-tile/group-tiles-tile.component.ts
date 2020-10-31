@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Group } from '../models/Group';
 
 @Component({
   selector: 'app-group-tiles-tile',
@@ -10,6 +11,7 @@ export class GroupTilesTileComponent implements OnInit {
   constructor() { }
   
   @Input() colorVariant : number;
+  @Input() group : Group;
 
   ngOnInit(): void {
   }

@@ -1,5 +1,5 @@
 export class Course {
     public id?: string;
-    public name?: string;
+    public title?: string;
     public groupCount?: string;
 }
