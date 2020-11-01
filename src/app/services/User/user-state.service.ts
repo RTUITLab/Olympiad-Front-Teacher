@@ -17,15 +17,13 @@ export class UserStateService {
   public currentUser: User;
 
   constructor(private http: HttpClient) {
-    if (localStorage.getItem('userToken')) {
-      this.getMe(localStorage.getItem('userToken'));
+    var token = localStorage.getItem('userToken') || environment.token;
+    if (token) {
+      this.getMe(token);
     } else {
-      if (environment.token) {
-        this.getMe(environment.token);
-      } else {
-        window.location.href = environment.redirectUrl;
-      }
+      window.location.href = environment.redirectUrl;
     }
+
   }
 
   private initUser(response: LoginResponse) {
@@ -43,12 +41,12 @@ export class UserStateService {
   }
 
   public getMe(token: string): Observable<boolean> {
-    
+
     let observer: Subscriber<boolean>;
     const observable = new Observable<boolean>(obs => {
       observer = obs;
     });
-    
+
     this.http.get<LoginResponse>(
       Api.getMe(),
       { headers: { 'Authorization': `Bearer ${token}` } }
@@ -84,7 +82,7 @@ export class UserStateService {
     localStorage.removeItem('userToken');
     this.usersBehavior.next(null);
     this.currentUser = null;
-    
+
     window.location.href = environment.redirectUrl;
   }
 

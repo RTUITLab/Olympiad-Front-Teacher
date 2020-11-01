@@ -1,6 +1,6 @@
 /* tslint:disable */
 import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
-import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { AccountService } from './services/account.service';
@@ -17,7 +17,6 @@ import { ExercisesService } from './services/exercises.service';
 import { GroupsService } from './services/groups.service';
 import { RolesService } from './services/roles.service';
 import { UserGenerateService } from './services/user-generate.service';
-
 
 /**
  * Module that provides all services and configuration.
