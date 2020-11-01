@@ -1,5 +1,11 @@
 # OlympiadFrontTeacher
 
+## Demo - https://mycode.rtuitlab.dev
+## Teacher mode - https://mycode.rtuitlab.dev/teach
+
+### login - admin@localhost.ru
+### password VeryStrongPass1
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
 ## Development server
