@@ -87,6 +87,7 @@
 
 .tables table .header .description {
     text-align: right;
+    white-space: nowrap;
 }
 
 .tables table .item .val {

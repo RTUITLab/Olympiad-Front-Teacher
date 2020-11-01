@@ -9,7 +9,7 @@
             Здесь располагаются группы, у которых вы ведете дисциплину «Структуры и алгоритмы».
         </div>
         <div class="tiles">
-            <app-group-tiles-tile *ngFor="let group of groups, let i = index" [colorVariant]="0" [group]="group"></app-group-tiles-tile>
+            <app-group-tiles-tile *ngFor="let group of groups, let i = index" [colorVariant]="0" [group]="group" routerLink="/teach/course/{{id}}/group/{{group.id}}"></app-group-tiles-tile>
         </div>
     </div>
 </div>
