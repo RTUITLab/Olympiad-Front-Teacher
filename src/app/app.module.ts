@@ -44,7 +44,7 @@ const appRoutes: Routes = [
   { path: 'teach/group-check', component: GroupCheckPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-task', component: AddTaskPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-group', component: AddGroupPageComponent, canActivate: [AuthGuardService]},
-  { path: 'teach/join-group/:id', component: JoinGroupComponent, canActivate: [AuthGuardService]}
+  { path: 'teach/join-group/:id', component: JoinGroupComponent, canActivate: [AuthGuardService]},
   { path: 'teach/task-check', component: TaskCheckPageComponent, canActivate: [AuthGuardService]}
 ];
 
@@ -61,19 +61,19 @@ const appRoutes: Routes = [
     GroupCheckPageComponent,
     AddTaskPageComponent,
     AddGroupPageComponent,
-    JoinGroupComponent
+    JoinGroupComponent,
     TaskCheckLogType1Component,
     TaskCheckLogType2Component,
-    TaskCheckCommentComponent
-    TaskCheckPageComponent,
+    TaskCheckCommentComponent,
+    TaskCheckPageComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-    MarkdownModule.forRoot(),
+    ReactiveFormsModule,
+    MarkdownModule.forRoot()
   ],
   providers: [
     UserStateService,
