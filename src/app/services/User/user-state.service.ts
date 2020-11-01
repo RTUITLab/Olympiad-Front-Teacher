@@ -17,13 +17,6 @@ export class UserStateService {
   public currentUser: User;
 
   constructor(private http: HttpClient) {
-    var token = localStorage.getItem('userToken') || environment.token;
-    if (token) {
-      this.getMe(token);
-    } else {
-      window.location.href = environment.redirectUrl;
-    }
-
   }
 
   private initUser(response: LoginResponse) {

@@ -11,7 +11,7 @@ export class ApiInterceptor implements HttpInterceptor {
     // Apply the headers
     req = req.clone({
       setHeaders: {
-        'Authorization': `Bearer ${environment.token}`
+        'Authorization': `Bearer ${environment.token || localStorage.getItem("userToken")}`
       }
     });
  
