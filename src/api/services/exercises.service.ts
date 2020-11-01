@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
 import { ExerciseCompactResponse } from '../models/exercise-compact-response';
+import { ExerciseExtendedRequest } from '../models/exercise-extended-request';
 import { ExerciseInfo } from '../models/exercise-info';
 import { ExerciseRequest } from '../models/exercise-request';
 
@@ -84,7 +85,7 @@ export class ExercisesService extends BaseService {
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   apiExercisesPost$Response(params?: {
-      body?: ExerciseRequest
+      body?: ExerciseExtendedRequest
   }): Observable<StrictHttpResponse<ExerciseInfo>> {
 
     const rb = new RequestBuilder(this.rootUrl, ExercisesService.ApiExercisesPostPath, 'post');
@@ -111,7 +112,7 @@ export class ExercisesService extends BaseService {
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   apiExercisesPost(params?: {
-      body?: ExerciseRequest
+      body?: ExerciseExtendedRequest
   }): Observable<ExerciseInfo> {
 
     return this.apiExercisesPost$Response(params).pipe(
