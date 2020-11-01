@@ -1,5 +1,5 @@
 <div class="containter">
-    <div class="content">
+    <form [formGroup]="form" class="content">
         <div class="title">
             Добавление задания в тему Структура данных «Очередь»
         </div>
@@ -9,7 +9,7 @@
                 Введите название задачи
             </div>
             <div class="item-content">
-                <input class="input" placeholder="Как называется задача" type="text">
+                <input class="input" placeholder="Как называется задача" type="text" formControlName="exerciseName">
             </div>
         </div>
 
@@ -18,7 +18,7 @@
                 Введите описание задачи
             </div>
             <div class="item-content">
-                TODO editor
+                <textarea formControlName="exerciseTask"></textarea>
             </div>
         </div>
 
@@ -28,35 +28,35 @@
             </div>
             <div class="item-content">
                 <div class="btns">
-                    <div class="btn">
+                    <div class="btn" (click)="addCollection()">
                         <img class="ic-plus"> Добавить набор
                     </div>
-                    <div class="btn">
+                    <div class="btn" (click)="addChecker()">
                         <img class="ic-plus"> Добавить чекер
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="item">
+        <div class="item" formArrayName="inOutData" *ngFor="let inOut of getInOutData(); let i = index">
             <div class="header btn">
-                <img class="ic-minus"> Набор 1
+                <img class="ic-minus" (click)="deleteCollection(i)"> Набор {{i + 1}}
             </div>
             <div class="item-content">
-                <div class="inputs">
-                    <input class="input" placeholder="Входные данные" type="text">
-                    <input class="input" placeholder="Выходные данные" type="text">
+                <div class="inputs" formGroupName="{{i}}">
+                    <input formControlName="inData" class="input" placeholder="Входные данные" type="text">
+                    <input formControlName="outData" class="input" placeholder="Выходные данные" type="text">
                     <input class="input no-grow" placeholder="Баллы" type="text">
                 </div>                
             </div>
         </div>
 
-        <div class="item">
+        <div class="item" formArrayName="checker" *ngFor="let c of getChecker(); let i = index">
             <div class="header btn">
-                <img class="ic-minus"> Чекер 1
+                <img class="ic-minus" (click)="deleteChecker(i)"> Чекер {{i + 1}}
             </div>
             <div class="item-content">
-                <div class="inputs"> 
+                <div class="inputs" formGroupName="{{i}}"> 
                     <div class="file">
                         <input class="input" readonly placeholder="Выберите файл..." type="text">
                         <input class="file-input" id="file-input1" type="file" name="file" multiple>
@@ -79,21 +79,23 @@
                 Выберите учеников, которым будет назначена задача. Оставьте пустым для назначения всей группе.
             </div>
             <div class="item-content">
-                <input class="input" placeholder="Начните набирать имя ученика..." type="text">
-
-                
+                <input formControlName="student" class="input" placeholder="Начните набирать имя ученика..." type="text">
+                <div class="dropdown">
+                    <div class="option" *ngFor="let student of students" (click)="select(student.id)">
+                        {{student.firstName}}
+                    </div>
+                </div>
             </div>
 
             <div class="omni-selected">
-                <div *ngFor="let item of [1,2,3,4,5]" class="element">
+                <div *ngFor="let student of showStudents" class="element">
                     <div class="avatar">
                         <img src="../../assets/jpg/noavatar.jpg">
                     </div>
                     <div class="label">
-                        Вася Пупкин
+                        {{student.firstName}}
                     </div>
                     <div class="btn"><img class="ic-close"></div>
-                    
                 </div>
             </div>
         </div>
@@ -104,53 +106,15 @@
             </div>
             <div class="item-content">
                 <div class="checkboxes">
-
-                    <div class="checkbox">
-                        <div class="box">
+                    <div class="checkbox" *ngFor="let lang of langs; let i = index" (click)="lang.f = !lang.f">
+                        <div class="box" [ngStyle]="{'background-color': getColor(i)}" >
                             <input id="check-input1" type="checkbox" name="check" value="check1">
                             <label for="check-input1"></label>
                         </div>
                         <div class="label">
-                            PHP
+                            {{lang.l}}
                         </div>
                     </div>
-                    <div class="checkbox">
-                        <div class="box">
-                            <input id="check-input2" type="checkbox" name="check" value="check1">
-                            <label for="check-input2"></label>
-                        </div>
-                        <div class="label">
-                            PHP
-                        </div>
-                    </div>
-                    <div class="checkbox">
-                        <div class="box">
-                            <input id="check-input3" type="checkbox" name="check" value="check1">
-                            <label for="check-input3"></label>
-                        </div>
-                        <div class="label">
-                            PHP
-                        </div>
-                    </div>
-                    <div class="checkbox">
-                        <div class="box">
-                            <input id="check-input4" type="checkbox" name="check" value="check1">
-                            <label for="check-input4"></label>
-                        </div>
-                        <div class="label">
-                            PHP
-                        </div>
-                    </div>
-                    <div class="checkbox">
-                        <div class="box">
-                            <input id="check-input5" type="checkbox" name="check" value="check1">
-                            <label for="check-input5"></label>
-                        </div>
-                        <div class="label">
-                            PHP
-                        </div>
-                    </div>
-                    
                 </div>
             </div>
         </div>
@@ -165,7 +129,7 @@
                     Доступное время исполнения программы
                 </div>
                 <div class="item-content">
-                    <input class="input" placeholder="Например, 3 сек" type="text">
+                    <input class="input" placeholder="Например, 3 сек" type="text" formControlName="timeLimit">
                 </div>
             </div>
 
@@ -177,14 +141,14 @@
                     Доступная программе память
                 </div>
                 <div class="item-content">
-                    <input class="input" placeholder="Например, 32 Мб" type="text">
+                    <input class="input" placeholder="Например, 32 Мб" type="text" formControlName="memoryLimit">
                 </div>
             </div>
         </div>
 
-        <div class="item-btn">
+        <div class="item-btn" (click)="submit()">
             Сохранить задачу
         </div>
 
-    </div>
+    </form>
 </div>

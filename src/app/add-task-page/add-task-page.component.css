@@ -70,7 +70,7 @@
     margin-top: 12px;
     position: relative;
     width: 100%;
-    display: flex;
+    display: grid;
 }
 
 .item-content .input {
@@ -296,4 +296,19 @@
     text-align: center;
     padding: 10px 40px;
     cursor: pointer;
+}
+
+.downdrop {
+    display: absolute;
+    max-width: 500px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.option {
+    padding: 10px;
+}
+
+.option:hover {
+    background-color: #e0e0e0;
 }
