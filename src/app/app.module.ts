@@ -24,6 +24,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ApiInterceptor } from './api.intercepter';
 import { forwardRef } from '@angular/core';
 import { Provider } from '@angular/core';
+import { JoinGroupComponent } from './join-group/join-group.component';
 
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
   { path: 'teach/group/:id', component: GroupOverviewPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/group-check', component: GroupCheckPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-task', component: AddTaskPageComponent, canActivate: [AuthGuardService]},
-  { path: 'teach/add-group', component: AddGroupPageComponent, canActivate: [AuthGuardService]}
+  { path: 'teach/add-group', component: AddGroupPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/join-group/:id', component: JoinGroupComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
     GroupOverviewPageComponent,
     GroupCheckPageComponent,
     AddTaskPageComponent,
-    AddGroupPageComponent
+    AddGroupPageComponent,
+    JoinGroupComponent
   ],
   imports: [
     BrowserModule,

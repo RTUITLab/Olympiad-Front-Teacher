@@ -1,0 +1,20 @@
+<div class="containter">
+    <form [formGroup]="createGroup" novalidate class="content">
+        <div class="title">
+            Добавление группы
+        </div>
+
+        <div class="item">
+            <div class="header">
+                Введите название группы
+            </div>
+            <div class="item-content">
+                <input class="input" placeholder="Как называется группа" type="text" formControlName="name">
+            </div>
+        </div>
+
+        <div (click)="submit()" class="item-btn">
+            Сохранить группу
+        </div>
+    </form>
+</div>
