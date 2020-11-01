@@ -23,6 +23,56 @@ export class CommentService extends BaseService {
   }
 
   /**
+   * Path part for operation apiCommentSolutionIdPost
+   */
+  static readonly ApiCommentSolutionIdPostPath = '/api/Comment/{solutionId}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCommentSolutionIdPost()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  apiCommentSolutionIdPost$Response(params: {
+    solutionId: string;
+      body?: null | Array<PostComment>
+  }): Observable<StrictHttpResponse<void>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CommentService.ApiCommentSolutionIdPostPath, 'post');
+    if (params) {
+
+      rb.path('solutionId', params.solutionId, {});
+
+      rb.body(params.body, 'application/*+json');
+    }
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: '*/*'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiCommentSolutionIdPost$Response()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  apiCommentSolutionIdPost(params: {
+    solutionId: string;
+      body?: null | Array<PostComment>
+  }): Observable<void> {
+
+    return this.apiCommentSolutionIdPost$Response(params).pipe(
+      map((r: StrictHttpResponse<void>) => r.body as void)
+    );
+  }
+
+  /**
    * Path part for operation apiCommentGet
    */
   static readonly ApiCommentGetPath = '/api/Comment';
@@ -68,53 +118,6 @@ export class CommentService extends BaseService {
 
     return this.apiCommentGet$Response(params).pipe(
       map((r: StrictHttpResponse<null | Array<Comment>>) => r.body as null | Array<Comment>)
-    );
-  }
-
-  /**
-   * Path part for operation apiCommentPost
-   */
-  static readonly ApiCommentPostPath = '/api/Comment';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiCommentPost()` instead.
-   *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
-   */
-  apiCommentPost$Response(params?: {
-      body?: null | Array<PostComment>
-  }): Observable<StrictHttpResponse<void>> {
-
-    const rb = new RequestBuilder(this.rootUrl, CommentService.ApiCommentPostPath, 'post');
-    if (params) {
-
-
-      rb.body(params.body, 'application/*+json');
-    }
-    return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
-      })
-    );
-  }
-
-  /**
-   * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiCommentPost$Response()` instead.
-   *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
-   */
-  apiCommentPost(params?: {
-      body?: null | Array<PostComment>
-  }): Observable<void> {
-
-    return this.apiCommentPost$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
     );
   }
 

@@ -47,7 +47,7 @@
                         <div class="code">
                             <markdown [data]="line.toString() | language : 'javascript'"></markdown>
                         </div>
-                        <app-task-check-comment *ngIf="findComments(i)" ></app-task-check-comment>
+                        <app-task-check-comment *ngIf="findComments(i)" [arr]="commentsArray" [index]="findCommentIndex(i)"></app-task-check-comment>
                     </div>
                     
                     <div class="gap"></div>

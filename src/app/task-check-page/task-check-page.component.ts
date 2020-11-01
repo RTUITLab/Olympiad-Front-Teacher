@@ -19,7 +19,7 @@ export class TaskCheckPageComponent implements OnInit {
     private commentS : CommentService,
     private router: Router
 
-    ) {commentS.apiCommentPost }
+    ) { }
 
   check : SolutionTeacherResponse;
 
@@ -56,6 +56,9 @@ export class TaskCheckPageComponent implements OnInit {
   findComments(i): PostComment {
     return this.commentsArray.find(c => c.rowNumber === i);
   }
+  findCommentIndex(i): number {
+    return this.commentsArray.findIndex(c => c.rowNumber === i);
+  }
 
   toggleComment(i) {
 
@@ -64,8 +67,7 @@ export class TaskCheckPageComponent implements OnInit {
     } else {
       this.commentsArray.push({
         raw: 'Введите комментарий',
-        rowNumber: i,
-        solutionId: this.check.solutionId
+        rowNumber: i
       });
     }
 
@@ -73,7 +75,7 @@ export class TaskCheckPageComponent implements OnInit {
   }
 
   async submitComments() {
-    await this.commentS.apiCommentPost({body: this.commentsArray}).toPromise();
+    await this.commentS.apiCommentSolutionIdPost({solutionId:this.check.solutionId, body: this.commentsArray}).toPromise();
     this.router.navigate([`teach/course/${this.cid}/group/${this.gid}/exercise/${this.eid}`]);
   }
 
