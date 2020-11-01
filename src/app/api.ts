@@ -16,4 +16,8 @@ export class Api {
   public static getCourse(id: string): string {
     return `${this.baseUrl}/api/courses?courseId=${id}`;
   }
+
+  public static getGroupeList(id): string {
+    return `${this.baseUrl}/api/groups?groupId=${id}`;
+  }
 }

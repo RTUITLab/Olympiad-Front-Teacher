@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { GroupCompactResponse, GroupResponse } from 'src/api/models';
+import { CoursesService, GroupsService } from 'src/api/services';
 import { Group } from '../models/Group';
+import { CourseService } from '../services/Course/course.service';
 import { GroupService } from '../services/Group/group.service';
 
 @Component({
@@ -9,18 +12,20 @@ import { GroupService } from '../services/Group/group.service';
   styleUrls: ['./group-tiles-page.component.css']
 })
 export class GroupTilesPageComponent implements OnInit {
-  public groups?: Array<Group>;
+  public groups?: Array<GroupResponse>;
 
   constructor(
     private route: ActivatedRoute,
-    private groupService: GroupService
+    private groupAPI: GroupsService,
+    private courseAPI: CoursesService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.groupService.getGroupsList(id).then((groups) => {
-      this.groups = groups;
+    const course = await this.courseAPI.apiCoursesCourseIdGet$Json({ courseId: id }).toPromise();
+    course.groups.forEach((gr, i, arr) => {
+      this.groupAPI.apiGroupsGroupIdFullGet$Json({groupId: gr.id}).toPromise().then((g) => this.groups.push(g))
     })
   }
 

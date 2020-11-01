@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { GroupResponse } from 'src/api/models';
 import { Group } from '../models/Group';
 
 @Component({
@@ -11,7 +12,7 @@ export class GroupTilesTileComponent implements OnInit {
   constructor() { }
   
   @Input() colorVariant : number;
-  @Input() group : Group;
+  @Input() group : GroupResponse;
 
   ngOnInit(): void {
   }
