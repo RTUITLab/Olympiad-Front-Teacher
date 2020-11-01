@@ -109,13 +109,13 @@ export class AddTaskPageComponent implements OnInit {
     this.showStudents = this.showStudents.filter((s) => s.id === id);
   }
 
-  submit(): void {
+  async submit(): Promise<void> {
     this.showStudents.forEach((s) => {
       (<FormArray>this.form.controls['specificUsers']).push(
         new FormControl(s.id, [Validators.required])
       )
     })
-    this.exerciseAPI.apiExercisesPost({body: this.form.value}).toPromise()
-      .then(this.router.navigate[`/teach/course/${this.route.snapshot.paramMap.get('cid')}/group/${this.route.snapshot.paramMap.get('gid')}`])
+    await this.exerciseAPI.apiExercisesPost({body: this.form.value}).toPromise();
+    this.router.navigate([`/teach/course/${this.route.snapshot.paramMap.get('cid')}/group/${this.route.snapshot.paramMap.get('gid')}`]);
   }
 }
