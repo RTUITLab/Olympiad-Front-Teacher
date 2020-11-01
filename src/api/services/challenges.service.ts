@@ -8,9 +8,7 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
-import { ChallengeCreateRequest } from '../models/challenge-create-request';
-import { ChallengeEditRequest } from '../models/challenge-edit-request';
-import { ChallengeExtendedResponse } from '../models/challenge-extended-response';
+import { ChallengeCreateEditRequest } from '../models/challenge-create-edit-request';
 import { ChallengeResponse } from '../models/challenge-response';
 
 @Injectable({
@@ -82,7 +80,7 @@ export class ChallengesService extends BaseService {
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   apiChallengesPost$Response(params?: {
-      body?: ChallengeCreateRequest
+      body?: ChallengeCreateEditRequest
   }): Observable<StrictHttpResponse<ChallengeResponse>> {
 
     const rb = new RequestBuilder(this.rootUrl, ChallengesService.ApiChallengesPostPath, 'post');
@@ -109,7 +107,7 @@ export class ChallengesService extends BaseService {
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   apiChallengesPost(params?: {
-      body?: ChallengeCreateRequest
+      body?: ChallengeCreateEditRequest
   }): Observable<ChallengeResponse> {
 
     return this.apiChallengesPost$Response(params).pipe(
@@ -179,8 +177,8 @@ export class ChallengesService extends BaseService {
    */
   apiChallengesIdPut$Response(params: {
     id: string;
-      body?: ChallengeEditRequest
-  }): Observable<StrictHttpResponse<ChallengeExtendedResponse>> {
+      body?: ChallengeCreateEditRequest
+  }): Observable<StrictHttpResponse<ChallengeResponse>> {
 
     const rb = new RequestBuilder(this.rootUrl, ChallengesService.ApiChallengesIdPutPath, 'put');
     if (params) {
@@ -195,7 +193,7 @@ export class ChallengesService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<ChallengeExtendedResponse>;
+        return r as StrictHttpResponse<ChallengeResponse>;
       })
     );
   }
@@ -208,11 +206,11 @@ export class ChallengesService extends BaseService {
    */
   apiChallengesIdPut(params: {
     id: string;
-      body?: ChallengeEditRequest
-  }): Observable<ChallengeExtendedResponse> {
+      body?: ChallengeCreateEditRequest
+  }): Observable<ChallengeResponse> {
 
     return this.apiChallengesIdPut$Response(params).pipe(
-      map((r: StrictHttpResponse<ChallengeExtendedResponse>) => r.body as ChallengeExtendedResponse)
+      map((r: StrictHttpResponse<ChallengeResponse>) => r.body as ChallengeResponse)
     );
   }
 

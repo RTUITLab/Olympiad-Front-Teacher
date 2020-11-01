@@ -1,6 +1,6 @@
 /* tslint:disable */
 import { Solution } from './solution';
-import { UserToChallenge } from './user-to-challenge';
+import { UserToExercise } from './user-to-exercise';
 import { UserToGroup } from './user-to-group';
 export interface User {
   accessFailedCount?: number;
@@ -21,6 +21,6 @@ export interface User {
   studentID?: null | string;
   twoFactorEnabled?: boolean;
   userName?: null | string;
+  userToExercises?: null | Array<UserToExercise>;
   userToGroups?: null | Array<UserToGroup>;
-  usersToChallenges?: null | Array<UserToChallenge>;
 }

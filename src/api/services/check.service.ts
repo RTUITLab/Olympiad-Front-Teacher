@@ -621,6 +621,104 @@ export class CheckService extends BaseService {
   }
 
   /**
+   * Path part for operation apiCheckBuildLogsSolutionIdGet
+   */
+  static readonly ApiCheckBuildLogsSolutionIdGetPath = '/api/Check/buildLogs/{solutionId}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCheckBuildLogsSolutionIdGet()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCheckBuildLogsSolutionIdGet$Response(params: {
+    solutionId: string;
+
+  }): Observable<StrictHttpResponse<null | string>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CheckService.ApiCheckBuildLogsSolutionIdGetPath, 'get');
+    if (params) {
+
+      rb.path('solutionId', params.solutionId, {});
+
+    }
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<null | string>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiCheckBuildLogsSolutionIdGet$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCheckBuildLogsSolutionIdGet(params: {
+    solutionId: string;
+
+  }): Observable<null | string> {
+
+    return this.apiCheckBuildLogsSolutionIdGet$Response(params).pipe(
+      map((r: StrictHttpResponse<null | string>) => r.body as null | string)
+    );
+  }
+
+  /**
+   * Path part for operation apiCheckRunLogsSolutionIdGet
+   */
+  static readonly ApiCheckRunLogsSolutionIdGetPath = '/api/Check/runLogs/{solutionId}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCheckRunLogsSolutionIdGet()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCheckRunLogsSolutionIdGet$Response(params: {
+    solutionId: string;
+
+  }): Observable<StrictHttpResponse<null | Array<SolutionCheckResponse>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CheckService.ApiCheckRunLogsSolutionIdGetPath, 'get');
+    if (params) {
+
+      rb.path('solutionId', params.solutionId, {});
+
+    }
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<null | Array<SolutionCheckResponse>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiCheckRunLogsSolutionIdGet$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCheckRunLogsSolutionIdGet(params: {
+    solutionId: string;
+
+  }): Observable<null | Array<SolutionCheckResponse>> {
+
+    return this.apiCheckRunLogsSolutionIdGet$Response(params).pipe(
+      map((r: StrictHttpResponse<null | Array<SolutionCheckResponse>>) => r.body as null | Array<SolutionCheckResponse>)
+    );
+  }
+
+  /**
    * Path part for operation apiCheckLogsSolutionIdGet
    */
   static readonly ApiCheckLogsSolutionIdGetPath = '/api/Check/logs/{solutionId}';

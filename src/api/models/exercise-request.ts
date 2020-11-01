@@ -4,4 +4,5 @@ export interface ExerciseRequest {
   exerciseName?: null | string;
   exerciseTask?: null | string;
   score?: number;
+  specificUsers?: null | Array<string>;
 }
