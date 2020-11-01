@@ -43,7 +43,7 @@ const appRoutes: Routes = [
   { path: 'teach/course/:id', component: GroupTilesPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/course/:cid/group/:gid', component: GroupOverviewPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/course/:cid/group/:gid/exercise/:eid', component: GroupCheckPageComponent, canActivate: [AuthGuardService]},
-  { path: 'teach/add-task/:groupId/:challengeId', component: AddTaskPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/course/:cid/group/:gid/add-task/:challengeId', component: AddTaskPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-group', component: AddGroupPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/join-group/:id', component: JoinGroupComponent, canActivate: [AuthGuardService]},
   { path: 'teach/course/:cid/group/:gid/exercise/:eid/user/:uid', component: TaskCheckPageComponent, canActivate: [AuthGuardService]}

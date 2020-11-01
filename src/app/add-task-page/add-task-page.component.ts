@@ -46,7 +46,7 @@ export class AddTaskPageComponent implements OnInit {
   ngOnInit(): void {
     this.showStudents = [];
     this.form = new FormGroup({
-      challengeId: new FormControl(this.route.snapshot.paramMap.get('id')),
+      challengeId: new FormControl(this.route.snapshot.paramMap.get('challengeId')),
       exerciseName: new FormControl('', [Validators.required]),
       exerciseTask: new FormControl('', [Validators.required]),
       inOutData: new FormArray([]),
@@ -54,6 +54,7 @@ export class AddTaskPageComponent implements OnInit {
       student: new FormControl(''),
       specificUsers: new FormArray([]),
       timeLimit: new FormControl(''),
+      score: new FormControl(0),
       memoryLimit: new FormControl('')
     })
     this.form.get('student').valueChanges.subscribe((text) => {
@@ -77,7 +78,7 @@ export class AddTaskPageComponent implements OnInit {
     (<FormArray>this.form.controls['inOutData']).push(new FormGroup({
       inData: new FormControl('', [Validators.required]),
       outData: new FormControl('', [Validators.required]),
-      isPublic: new FormControl('true', [Validators.required])
+      isPublic: new FormControl(true, [Validators.required])
     }))
   }
 
@@ -114,6 +115,7 @@ export class AddTaskPageComponent implements OnInit {
         new FormControl(s.id, [Validators.required])
       )
     })
-    this.exerciseAPI.apiExercisesPost({body: this.form.value}).toPromise().then(this.router.navigate[`/teach/group/${this.route.snapshot.paramMap.get('groupId')}`])
+    this.exerciseAPI.apiExercisesPost({body: this.form.value}).toPromise()
+      .then(this.router.navigate[`/teach/course/${this.route.snapshot.paramMap.get('cid')}/group/${this.route.snapshot.paramMap.get('gid')}`])
   }
 }
