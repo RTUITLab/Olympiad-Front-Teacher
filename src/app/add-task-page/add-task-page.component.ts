@@ -116,6 +116,6 @@ export class AddTaskPageComponent implements OnInit {
       )
     })
     this.exerciseAPI.apiExercisesPost({body: this.form.value}).toPromise()
-      .then(this.router.navigate[`/teach/course/${this.route.snapshot.paramMap.get('cid')}/group/${this.route.snapshot.paramMap.get('gid')}`])
+      .then(() => this.router.navigate[`/teach/course/${this.route.snapshot.paramMap.get('cid')}/group/${this.route.snapshot.paramMap.get('gid')}`])
   }
 }
