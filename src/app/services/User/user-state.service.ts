@@ -43,6 +43,7 @@ export class UserStateService {
   }
 
   public getMe(token: string): Observable<boolean> {
+    
     let observer: Subscriber<boolean>;
     const observable = new Observable<boolean>(obs => {
       observer = obs;

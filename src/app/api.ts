@@ -8,4 +8,12 @@ export class Api {
   public static getMe(): string {
     return `${this.baseUrl}/api/auth/getme`;
   }
+
+  public static getCoursesList(): string {
+    return `${this.baseUrl}/api/courses`;
+  }
+
+  public static getCourse(id: string): string {
+    return `${this.baseUrl}/api/courses?courseId=${id}`;
+  }
 }

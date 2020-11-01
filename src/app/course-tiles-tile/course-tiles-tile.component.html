@@ -1,17 +1,17 @@
 <div class="container"
     [ngClass]= " {
-        var0: colorVariant == 0,
-        var1: colorVariant == 1,
-        var2: colorVariant == 2,
-        var3: colorVariant == 3
+        var0: colorVariant % 4 == 0,
+        var1: colorVariant % 4 == 1,
+        var2: colorVariant % 4 == 2,
+        var3: colorVariant % 4 == 3
     }"
 >
     <div class="bg"></div>
     <div class="title">
-        Интернет вещей
+        {{course.title}}
     </div>
     <div class="description">
-        2 группы
+        Групп:&nbsp;{{course.groupsCount}}
     </div>
 
 </div>

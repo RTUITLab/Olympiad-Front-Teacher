@@ -1,0 +1,116 @@
+<div class="containter">
+    <form [formGroup]="createGroup" novalidate class="content">
+        <div class="title">
+            Добавление группы
+        </div>
+
+        <div class="item">
+            <div class="header">
+                Введите название группы
+            </div>
+            <div class="item-content">
+                <input class="input" placeholder="Как называется группа" type="text" formControlName="name">
+            </div>
+        </div>
+
+        <div class="item" *ngIf="changeMode">
+            <div class="header">
+                Ссылка на приглашение в группу
+            </div>
+            <div class="description">
+                Скопируйте ссылку и отправьте ее учащимся, чтобы они смогли присоединиться к курсу.
+            </div>
+            <div class="item-content">
+                <input class="input" readonly placeholder="https://olympiad.ru/group/invite123" type="text">
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="header">
+                Выберите даты проведения занятий
+            </div>
+            <div class="item-content">
+                <div class="calendar" [ngClass]="{disabled: disabled(0)}">
+                    <div class="day">
+                        <div class="label" (click)="toggle(0)">
+                           <div class="inner">
+                            пн
+                           </div>
+                        </div>
+                        <div class="time">
+                            <input *ngIf="days[0]===true" class="active" type="text" value="12:00" formControlName="d1">
+                            <input *ngIf="days[0]===false" class="disabled" disabled type="text" placeholder="—">
+                        </div>
+                    </div>
+
+                    <div class="day">
+                        <div class="label" (click)="toggle(1)">
+                           <div class="inner">
+                            вт
+                           </div>
+                        </div>
+                        <div class="time">
+                            <input *ngIf="days[1]===true" class="active" type="text" value="12:00" formControlName="d2">
+                            <input *ngIf="days[1]===false" class="disabled" disabled type="text" placeholder="—">
+                        </div>
+                    </div>
+
+                    <div class="day">
+                        <div class="label" (click)="toggle(2)">
+                           <div class="inner">
+                            ср
+                           </div>
+                        </div>
+                        <div class="time">
+                            <input *ngIf="days[2]===true" class="active" type="text" value="12:00" formControlName="d3">
+                            <input *ngIf="days[2]===false" class="disabled" disabled type="text" placeholder="—">
+                        </div>
+                    </div>
+
+                    <div class="day">
+                        <div class="label" (click)="toggle(3)">
+                           <div class="inner">
+                            чт
+                           </div>
+                        </div>
+                        <div class="time">
+                            <input *ngIf="days[3]===true" class="active" type="text" value="12:00" formControlName="d4">
+                            <input *ngIf="days[3]===false" class="disabled" disabled type="text" placeholder="—">
+                        </div>
+                    </div>
+
+                    <div class="day">
+                        <div class="label" (click)="toggle(4)">
+                           <div class="inner">
+                            пт
+                           </div>
+                        </div>
+                        <div class="time">
+                            <input *ngIf="days[4]===true" class="active" type="text" value="12:00" formControlName="d5">
+                            <input *ngIf="days[4]===false" class="disabled" disabled type="text" placeholder="—">
+                        </div>
+                    </div>
+
+                    <div class="day">
+                        <div class="label" (click)="toggle(5)">
+                           <div class="inner">
+                            сб
+                           </div>
+                        </div>
+                        <div class="time">
+                            <input *ngIf="days[5]===true" class="active" type="text" value="12:00" formControlName="d6">
+                            <input *ngIf="days[5]===false" class="disabled" disabled type="text" placeholder="—">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div (click)="submit()" class="item-btn">
+            Сохранить группу
+        </div>
+
+    </form>
+</div>
