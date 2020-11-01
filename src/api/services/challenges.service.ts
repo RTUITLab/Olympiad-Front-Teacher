@@ -116,6 +116,55 @@ export class ChallengesService extends BaseService {
   }
 
   /**
+   * Path part for operation apiChallengesForGroupGroupIdGet
+   */
+  static readonly ApiChallengesForGroupGroupIdGetPath = '/api/challenges/forGroup/{groupId}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiChallengesForGroupGroupIdGet()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiChallengesForGroupGroupIdGet$Response(params: {
+    groupId: string;
+
+  }): Observable<StrictHttpResponse<null | Array<ChallengeResponse>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, ChallengesService.ApiChallengesForGroupGroupIdGetPath, 'get');
+    if (params) {
+
+      rb.path('groupId', params.groupId, {});
+
+    }
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<null | Array<ChallengeResponse>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiChallengesForGroupGroupIdGet$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiChallengesForGroupGroupIdGet(params: {
+    groupId: string;
+
+  }): Observable<null | Array<ChallengeResponse>> {
+
+    return this.apiChallengesForGroupGroupIdGet$Response(params).pipe(
+      map((r: StrictHttpResponse<null | Array<ChallengeResponse>>) => r.body as null | Array<ChallengeResponse>)
+    );
+  }
+
+  /**
    * Path part for operation apiChallengesIdGet
    */
   static readonly ApiChallengesIdGetPath = '/api/challenges/{id}';

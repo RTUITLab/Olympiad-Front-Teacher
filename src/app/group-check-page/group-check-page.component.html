@@ -9,32 +9,14 @@
         <div class="tables">
             <table>
                 <tr class="header">
-                    <th colspan="3" class="title">Задача 1. Простая очередь</th>
+                    <th colspan="3" class="title">{{exercise.name}}</th>
                     <th colspan="1" class="description">8 учеников</th>
                 </tr>
-                <tr class="item">
+                <tr class="item" *ngFor="let user of users">
                     <td class="val">100 / 100</td>
                     <td class="status"><img class="ic-circle-green"></td>
-                    <td class="name">Вася Пупкин</td>
-                    <td class="label">23 окт. 23:15</td>
-                </tr>
-                <tr class="item">
-                    <td class="val">30 / 100</td>
-                    <td class="status"><img class="ic-circle-grey"></td>
-                    <td class="name">Анна Лаппина</td>
-                    <td class="label">23 окт. 23:15</td>
-                </tr>
-                <tr class="item">
-                    <td class="val">30 / 100</td>
-                    <td class="status"><img class="ic-circle-grey"></td>
-                    <td class="name">Женя Пупкин</td>
-                    <td class="label">23 окт. 23:15</td>
-                </tr>
-                <tr class="item">
-                    <td class="val">300 / 100</td>
-                    <td class="status"><img class="ic-circle-grey"></td>
-                    <td class="name">Вова Путин</td>
-                    <td class="label">23 окт. 23:15</td>
+                    <td class="name">{{user.user.firstName}}</td>
+                    <td class="label">{{timeToString(user.sendedTime)}}</td>
                 </tr>
                 <tr class="item add">
                     <td class="val"></td>
