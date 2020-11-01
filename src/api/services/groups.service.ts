@@ -164,8 +164,7 @@ export class GroupsService extends BaseService {
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   apiGroupsPost$Json$Response(params?: {
-      body?: GroupCreateEditRequest,
-      headers?:
+      body?: GroupCreateEditRequest
   }): Observable<StrictHttpResponse<GroupResponse>> {
 
     const rb = new RequestBuilder(this.rootUrl, GroupsService.ApiGroupsPostPath, 'post');
@@ -192,8 +191,7 @@ export class GroupsService extends BaseService {
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   apiGroupsPost$Json(params?: {
-      body?: GroupCreateEditRequest,
-      headers?: any
+      body?: GroupCreateEditRequest
   }): Observable<GroupResponse> {
 
     return this.apiGroupsPost$Json$Response(params).pipe(

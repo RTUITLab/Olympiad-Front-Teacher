@@ -48,8 +48,7 @@ export class AddGroupPageComponent implements OnInit {
       this.createGroup.get('d4').value + '#' +
       this.createGroup.get('d5').value + '#' +
       this.createGroup.get('d6').value;
-    this.groupAPI.apiGroupsPost$Json({ body: {name: this.createGroup.get('name').value, lessonsTime: lessonsTime},
-      headers: this.userService.authOptions}).toPromise()
+    this.groupAPI.apiGroupsPost$Json({ body: {name: this.createGroup.get('name').value, lessonsTime: lessonsTime}}).toPromise()
       .then(() => this.router.navigate(['/teach']));
   }
 }
