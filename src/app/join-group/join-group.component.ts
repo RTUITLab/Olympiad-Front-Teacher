@@ -33,8 +33,21 @@ export class JoinGroupComponent implements OnInit {
     this.groups = await this.groupAPI.apiGroupsGet$Json().toPromise();
   }
 
-  find(text: string) {
-    return this.groups.filter(G => G.name.indexOf(text) !== -1)
+  active () {
+    return this.createGroup.get('name').value === '' || undefined || null;
+  }
+
+  find() {
+    let g = this.groups
+    return g.filter(G => {
+      if (G.name)
+        return G.name.indexOf(this.createGroup.get('name').value) !== -1;
+      return false;
+    })
+  }
+
+  choose(group: GroupCompactResponse) {
+    this.groupId = group.id;
   }
 
   submit() {

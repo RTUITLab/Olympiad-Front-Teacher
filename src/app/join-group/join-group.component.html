@@ -9,7 +9,10 @@
                 Введите название группы
             </div>
             <div class="item-content">
-                <input class="input" placeholder="Как называется группа" type="text" formControlName="name">
+                <input id="search" class="input" placeholder="Как называется группа" type="text" formControlName="name">
+                <div id="dropdown" *ngIf="active() && !groupId">
+                    <div class="option" *ngFor="let group of find()" (click)="choose(group)">{{group.name}}</div>
+                </div>
             </div>
         </div>
 

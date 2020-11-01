@@ -12,6 +12,7 @@ import { GroupService } from '../services/Group/group.service';
   styleUrls: ['./group-tiles-page.component.css']
 })
 export class GroupTilesPageComponent implements OnInit {
+  public id?: string;
   public groups?: Array<GroupResponse>;
 
   constructor(
@@ -21,9 +22,10 @@ export class GroupTilesPageComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.groups = [];
 
-    const course = await this.courseAPI.apiCoursesCourseIdGet$Json({ courseId: id }).toPromise();
+    const course = await this.courseAPI.apiCoursesCourseIdGet$Json({ courseId: this.id }).toPromise();
     course.groups.forEach((gr, i, arr) => {
       this.groupAPI.apiGroupsGroupIdFullGet$Json({groupId: gr.id}).toPromise().then((g) => this.groups.push(g))
     })
