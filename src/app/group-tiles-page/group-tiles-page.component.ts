@@ -27,7 +27,8 @@ export class GroupTilesPageComponent implements OnInit {
 
     const course = await this.courseAPI.apiCoursesCourseIdGet$Json({ courseId: this.id }).toPromise();
     course.groups.forEach((gr, i, arr) => {
-      this.groupAPI.apiGroupsGroupIdFullGet$Json({groupId: gr.id}).toPromise().then((g) => this.groups.push(g))
+      this.groupAPI.apiGroupsGroupIdFullGet$Json({groupId: gr.id}).toPromise().then((g) => this.groups.push(g));
+
     })
   }
 

@@ -40,7 +40,7 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
 const appRoutes: Routes = [
   { path: 'teach', component: CourseTilesPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/course/:id', component: GroupTilesPageComponent, canActivate: [AuthGuardService]},
-  { path: 'teach/group/:id', component: GroupOverviewPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/course/:cid/group/:gid', component: GroupOverviewPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/group-check', component: GroupCheckPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-task', component: AddTaskPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-group', component: AddGroupPageComponent, canActivate: [AuthGuardService]},
