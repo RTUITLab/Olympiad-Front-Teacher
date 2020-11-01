@@ -30,6 +30,7 @@ import { ApiInterceptor } from './api.intercepter';
 import { forwardRef } from '@angular/core';
 import { Provider } from '@angular/core';
 import { JoinGroupComponent } from './join-group/join-group.component';
+import { ApiModule } from 'src/api/api.module';
 
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -40,8 +41,8 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
 const appRoutes: Routes = [
   { path: 'teach', component: CourseTilesPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/course/:id', component: GroupTilesPageComponent, canActivate: [AuthGuardService]},
-  { path: 'teach/group/:id', component: GroupOverviewPageComponent, canActivate: [AuthGuardService]},
-  { path: 'teach/group-check', component: GroupCheckPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/course/:cid/group/:gid', component: GroupOverviewPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/course/:cid/group/:gid/exercise/:eid', component: GroupCheckPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-task', component: AddTaskPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-group', component: AddGroupPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/join-group/:id', component: JoinGroupComponent, canActivate: [AuthGuardService]},
@@ -73,7 +74,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    ApiModule.forRoot({ rootUrl: 'https://mycode.rtuitlab.dev' }),
   ],
   providers: [
     UserStateService,

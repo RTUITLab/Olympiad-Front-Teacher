@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ExerciseCompactResponse } from 'src/api/models';
+import { ExercisesService } from 'src/api/services';
 
 @Component({
   selector: 'app-group-check-page',
@@ -9,7 +11,11 @@ export class GroupCheckPageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  
+
+  async ngOnInit(): Promise<void> {
+
+
   }
 
 }
