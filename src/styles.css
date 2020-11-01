@@ -26,6 +26,23 @@ input[type="checkbox"] {
   display: none;
 }
 
+
+.icc-arr-down {
+  content: url("src/assets/svg/chevron-down-outline.svg");
+  width: 28px !important;
+  display: inline;
+  position: relative;
+}
+
+.icc-arr-up {
+  content: url("src/assets/svg/chevron-up-outline.svg");
+  width: 28px !important;
+  display: inline;
+  position: relative;
+}
+
+
+
 .ic-close {
   content: url("src/assets/svg/false.svg");
   width: 20px !important;
@@ -34,6 +51,15 @@ input[type="checkbox"] {
   position: relative;
   bottom: -0.2em;
   filter: invert(100%);
+}
+
+.ic-copy {
+  content: url("src/assets/svg/Copy.svg");
+  width: 20px !important;
+  height: 20px !important;
+  display: inline;
+  position: relative;
+  bottom: -0.2em;
 }
 
 .ic-plus {
@@ -63,6 +89,18 @@ input[type="checkbox"] {
   bottom: -0.2em;
 }
 
+.ic-download {
+  content: url("src/assets/svg/download.svg");
+  width: 20px !important;
+  height: 20px !important;
+  display: inline;
+  position: relative;
+  bottom: -0.2em;
+  transform: rotate(180deg);
+}
+
+
+
 .ic-big-upload {
   content: url("src/assets/svg/download.svg");
   width: 27px !important;
@@ -71,6 +109,7 @@ input[type="checkbox"] {
   position: relative;
   filter: invert(100%);
 }
+
 
 .ic-checked {
   content: url("src/assets/svg/checked.svg");
@@ -105,4 +144,16 @@ input[type="checkbox"] {
   display: inline;
   position: relative;
   bottom: -0.2em;
+}
+
+
+.ic-status-ok {
+  content: url("src/assets/svg/ok.svg");
+  width: 43px !important;
+  height:43px !important;
+  display: inline;
+  position: relative;
+  border: solid 1px #fff;
+  border-radius: 100%;
+  background-color: #fff;
 }

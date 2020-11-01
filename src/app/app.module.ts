@@ -13,14 +13,23 @@ import { GroupOverviewPageComponent } from './group-overview-page/group-overview
 import { GroupCheckPageComponent } from './group-check-page/group-check-page.component';
 import { AddTaskPageComponent } from './add-task-page/add-task-page.component';
 import { AddGroupPageComponent } from './add-group-page/add-group-page.component';
+import { UserStateService } from './services/User/user-state.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthGuardService } from './services/AuthGuard/auth-guard.service';
+import { TaskCheckPageComponent } from './task-check-page/task-check-page.component';
+import { MarkdownModule } from 'ngx-markdown';
+import { TaskCheckLogType1Component } from './task-check-log-type1/task-check-log-type1.component';
+import { TaskCheckLogType2Component } from './task-check-log-type2/task-check-log-type2.component';
+import { TaskCheckCommentComponent } from './task-check-comment/task-check-comment.component';
 
 const appRoutes: Routes = [
-  { path: 'teach', component: CourseTilesPageComponent},
-  { path: 'teach/group', component: GroupTilesPageComponent},
-  { path: 'teach/group-overview', component: GroupOverviewPageComponent},
-  { path: 'teach/group-check', component: GroupCheckPageComponent},
-  { path: 'teach/add-task', component: AddTaskPageComponent},
-  { path: 'teach/add-group', component: AddGroupPageComponent}
+  { path: 'teach', component: CourseTilesPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/group', component: GroupTilesPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/group-overview', component: GroupOverviewPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/group-check', component: GroupCheckPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/add-task', component: AddTaskPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/add-group', component: AddGroupPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/task-check', component: TaskCheckPageComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({
@@ -35,13 +44,22 @@ const appRoutes: Routes = [
     GroupOverviewPageComponent,
     GroupCheckPageComponent,
     AddTaskPageComponent,
-    AddGroupPageComponent
+    AddGroupPageComponent,
+    TaskCheckPageComponent,
+    TaskCheckLogType1Component,
+    TaskCheckLogType2Component,
+    TaskCheckCommentComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MarkdownModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    UserStateService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

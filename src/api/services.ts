@@ -1,0 +1,12 @@
+export { AccountService } from './services/account.service';
+export { AdminService } from './services/admin.service';
+export { AuthService } from './services/auth.service';
+export { ChallengesService } from './services/challenges.service';
+export { CheckService } from './services/check.service';
+export { CommentService } from './services/comment.service';
+export { DumpService } from './services/dump.service';
+export { ExecutorService } from './services/executor.service';
+export { ExerciseDataService } from './services/exercise-data.service';
+export { ExercisesService } from './services/exercises.service';
+export { RolesService } from './services/roles.service';
+export { UserGenerateService } from './services/user-generate.service';

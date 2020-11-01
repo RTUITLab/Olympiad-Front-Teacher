@@ -1,16 +1,9 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
-  production: false
+  production: true,
+  isAdmin: false,
+  baseUrl: 'https://mycode.rtuitlab.dev',
+  buildNumber: 'test build number',
+  showResults: true,
+  redirectUrl: 'http://localhost:4201',
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzNzA2MzEwNC1iNGNmLTRlYzYtODhiMi1kODI0ZmFmNzVkOWIiLCJpYXQiOjE2MDQxNTM0MjcsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJhZG1pbkBsb2NhbGhvc3QucnUiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiQWRtaW4iLCJVc2VyIiwiRXhlY3V0b3IiLCJSZXN1bHRzVmlld2VyIl0sImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNWIwYTRhNGEtZDc0Ny00OGM3LTg3NDUtOWQwYjgzYWU4NWYxIiwibmJmIjoxNjA0MTUzNDI3LCJleHAiOjE2MTQ1MjE0Mjd9.M9KRQUeiNxq4bW0thdl9hWPVTILrLEMftNwMLQf02Jk'
 };
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.

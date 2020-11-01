@@ -1,0 +1,69 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+name: $(BuildID)-$(Build.SourceBranchName)
+
+stages:
+- stage: build
+  jobs:
+  - job: buildFrontTeacher
+    steps:
+    - task: Npm@1
+      displayName: npm ci
+      inputs:
+        command: 'ci'
+    - task: Npm@1
+      displayName: fill prod environments
+      inputs:
+        command: 'custom'
+        customCommand: 'run fillDefaultProdEnv -- -buildNumber $(Build.BuildId)'
+    - task: Npm@1
+      displayName: build to deploy folder
+      inputs:
+        command: 'custom'
+        customCommand: 'run build'
+    - task: CopyFiles@2
+      displayName: copy dist to docker artifact
+      inputs:
+        SourceFolder: 'dist/Olympiad-Front-Teacher'
+        Contents: '**'
+        TargetFolder: 'deploy/olympiad-front-teacher-build'
+    - publish: deploy
+      artifact: olympiad-front-teacher-pack
+- stage: dockerImage
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  jobs:
+  - job: dockerBuild
+    steps:
+    - download: current
+      artifact: olympiad-front-teacher-pack
+      displayName: Download olympiad-front-teacher-pack
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'rtuitlab connection by admin'
+        repository: 'rtuitlab/olympiad-front-teacher'
+        command: 'buildAndPush'
+        Dockerfile: '$(Pipeline.Workspace)/olympiad-front-teacher-pack/Dockerfile'
+        buildContext: '$(Pipeline.Workspace)/olympiad-front-teacher-pack'
+        tags: |
+          $(Build.BuildId)
+          latest
+- stage: deploy
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  jobs:
+    - deployment: DeployFront
+      displayName: Deploy front
+      pool:
+        vmImage: 'Ubuntu-16.04'
+      environment: 'production'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - download: none
+              - task: SSH@0
+                inputs:
+                  sshEndpoint: 'swarm manager'
+                  runOptions: 'commands'
+                  commands: 'docker service update --image rtuitlab/olympiad-front-teacher:$(Build.BuildId) mycode_front'
+                  readyTimeout: '20000'
