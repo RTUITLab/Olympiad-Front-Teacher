@@ -10,9 +10,9 @@
             <table>
                 <tr class="header">
                     <th colspan="3" class="title">{{exercise.name}}</th>
-                    <th colspan="1" class="description">8 учеников</th>
+                    <th colspan="1" class="description">{{users &&  users.length}}  учеников</th>
                 </tr>
-                <tr class="item" *ngFor="let user of users">
+                <tr class="item" *ngFor="let user of users" routerLink="/teach/course/{{cid}}/group/{{gid}}/exercise/{{eid}}/user/{{user.user.id}}">
                     <td class="val">100 / 100</td>
                     <td class="status"><img class="ic-circle-green"></td>
                     <td class="name">{{user.user.firstName}}</td>

@@ -4,15 +4,24 @@
             Добавление группы
         </div>
 
-        <div class="item">
+        <div class="item" *ngIf="!group">
             <div class="header">
                 Введите название группы
             </div>
             <div class="item-content">
                 <input id="search" class="input" placeholder="Как называется группа" type="text" formControlName="name">
-                <div id="dropdown" *ngIf="active() && !groupId">
+                <div id="dropdown" *ngIf="active() && !group">
                     <div class="option" *ngFor="let group of find()" (click)="choose(group)">{{group.name}}</div>
                 </div>
+            </div>
+        </div>
+        <div class="item" *ngIf="group">
+            <div class="header">
+                Введите название группы
+            </div>
+            <div class="item-content">
+                <input  readonly class="input" placeholder="{{group.name}}" type="text" formControlName="name" (click)="group = null">
+
             </div>
         </div>
 

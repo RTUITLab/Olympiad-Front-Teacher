@@ -1,11 +1,11 @@
 <div class="containter">
     <div class="content">
         <div class="title">
-            Гири
+            {{check && check.exerciseName}}
         </div>
         <div class="description">
-            Баллы: 10 max <br>
-            Тестирование: Предварительная Профессиональная Олимпиада
+            Баллы: {{check && check.totalScore}} max <br>
+            Тестирование: {{challenge && challenge.name}}
         </div>
         
         <div class="item-btn">
@@ -34,9 +34,9 @@
 
                 <div class="editor">
                     <div class="gap"></div>
-                    <div class="line" *ngFor="let line of solutionStrings; let i = index">
+                    <div class="line" *ngFor="let line of check && check.raw.split('\n'); let i = index">
                         <div class="lineNumber">
-                            <div class="breakPoint ">
+                            <div class="breakPoint " [class.active]="findComments(i)" (click)="toggleComment(i)">
                                 <div class="inner"></div>
                             </div>
                             <div class="num">
@@ -47,23 +47,9 @@
                         <div class="code">
                             <markdown [data]="line.toString() | language : 'javascript'"></markdown>
                         </div>
-                        
+                        <app-task-check-comment *ngIf="findComments(i)" ></app-task-check-comment>
                     </div>
-                    <div class="line">
-                        <div class="lineNumber">
-                            <div class="breakPoint active">
-                                <div class="inner"></div>
-                            </div>
-                            <div class="num">
-                                4    
-                            </div>
-                                      
-                        </div>
-                        <div class="code">
-                            <markdown [data]="'{}' | language : 'javascript'"></markdown>
-                        </div>
-                        <app-task-check-comment></app-task-check-comment>
-                    </div>
+                    
                     <div class="gap"></div>
                     
                 </div>
@@ -71,23 +57,11 @@
 
             </div>
         </div>
-        <div class="logs-window" [class.open]="logOpen">
-            <div class="header" (click)="logToggle()">
-                <div class="label">
-                    Посмотреть логи компиляции
-                </div>
-                <div class="arrowDown">
-                    <img class="icc-arr-down">
-                </div>
-                <div class="arrowUp">
-                    <img class="icc-arr-up">
-                </div>
-            </div>
-            <div class="body" *ngIf="logOpen">
-                <app-task-check-log-type1 [failedTest]="1" [inputData]="'11 32424 563 12'" [expectedAnswer]="'5'" [receivedAnswer]="'32'"></app-task-check-log-type1>
-                <!--<app-task-check-log-type2 [errorLog]="'oshibka!'"></app-task-check-log-type2>-->
-            </div>
+
+        <div class="item-btn" (click)="submitComments()">
+            Оставить комментарий ученику
         </div>
+        
 
     </div>
 </div>

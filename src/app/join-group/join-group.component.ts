@@ -12,7 +12,7 @@ import { UserStateService } from '../services/User/user-state.service';
 })
 export class JoinGroupComponent implements OnInit {
   courseId?: string;
-  groupId?: string;
+  group?: GroupCompactResponse;
   createGroup: FormGroup;
   groups: GroupCompactResponse[];
 
@@ -34,24 +34,27 @@ export class JoinGroupComponent implements OnInit {
   }
 
   active () {
-    return this.createGroup.get('name').value === '' || undefined || null;
+    return true;
   }
 
   find() {
     let g = this.groups
+    if(!g) return [];
     return g.filter(G => {
       if (G.name)
         return G.name.indexOf(this.createGroup.get('name').value) !== -1;
       return false;
+
     })
   }
 
   choose(group: GroupCompactResponse) {
-    this.groupId = group.id;
+    this.group = group;
+
   }
 
   submit() {
-    this.courseAPI.apiCoursesCourseIdAddgroupGroupIdPut$Json({courseId: this.courseId, groupId: this.groupId}).toPromise()
+    this.courseAPI.apiCoursesCourseIdAddgroupGroupIdPut$Json({courseId: this.courseId, groupId: this.group.id}).toPromise()
       .then(() => this.router.navigate(['/teach']));
   }
 }

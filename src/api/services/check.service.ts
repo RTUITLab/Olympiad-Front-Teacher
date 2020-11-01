@@ -11,6 +11,7 @@ import { map, filter } from 'rxjs/operators';
 import { SolutionCheckResponse } from '../models/solution-check-response';
 import { SolutionDumpView } from '../models/solution-dump-view';
 import { SolutionResponse } from '../models/solution-response';
+import { SolutionTeacherResponse } from '../models/solution-teacher-response';
 import { SolutionsStatisticResponse } from '../models/solutions-statistic-response';
 
 @Injectable({
@@ -470,6 +471,58 @@ export class CheckService extends BaseService {
 
     return this.apiCheckSolutionIdGet$Response(params).pipe(
       map((r: StrictHttpResponse<SolutionResponse>) => r.body as SolutionResponse)
+    );
+  }
+
+  /**
+   * Path part for operation apiCheckGetForExerciseExerciseIdUserIdGet
+   */
+  static readonly ApiCheckGetForExerciseExerciseIdUserIdGetPath = '/api/Check/getForExercise/{exerciseId}/{userId}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCheckGetForExerciseExerciseIdUserIdGet()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCheckGetForExerciseExerciseIdUserIdGet$Response(params: {
+    exerciseId: string;
+    userId: string;
+
+  }): Observable<StrictHttpResponse<SolutionTeacherResponse>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CheckService.ApiCheckGetForExerciseExerciseIdUserIdGetPath, 'get');
+    if (params) {
+
+      rb.path('exerciseId', params.exerciseId, {});
+      rb.path('userId', params.userId, {});
+
+    }
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<SolutionTeacherResponse>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiCheckGetForExerciseExerciseIdUserIdGet$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCheckGetForExerciseExerciseIdUserIdGet(params: {
+    exerciseId: string;
+    userId: string;
+
+  }): Observable<SolutionTeacherResponse> {
+
+    return this.apiCheckGetForExerciseExerciseIdUserIdGet$Response(params).pipe(
+      map((r: StrictHttpResponse<SolutionTeacherResponse>) => r.body as SolutionTeacherResponse)
     );
   }
 

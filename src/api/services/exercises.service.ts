@@ -13,6 +13,7 @@ import { ExerciseCompactResponse } from '../models/exercise-compact-response';
 import { ExerciseExtendedRequest } from '../models/exercise-extended-request';
 import { ExerciseInfo } from '../models/exercise-info';
 import { ExerciseRequest } from '../models/exercise-request';
+import { TeacherExerciseCompactResponse } from '../models/teacher-exercise-compact-response';
 
 @Injectable({
   providedIn: 'root',
@@ -167,6 +168,55 @@ export class ExercisesService extends BaseService {
 
     return this.apiExercisesPost$Response(params).pipe(
       map((r: StrictHttpResponse<ExerciseInfo>) => r.body as ExerciseInfo)
+    );
+  }
+
+  /**
+   * Path part for operation apiExercisesForTeacherGet
+   */
+  static readonly ApiExercisesForTeacherGetPath = '/api/exercises/forTeacher';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiExercisesForTeacherGet()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiExercisesForTeacherGet$Response(params?: {
+    challengeId?: string;
+
+  }): Observable<StrictHttpResponse<null | Array<TeacherExerciseCompactResponse>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, ExercisesService.ApiExercisesForTeacherGetPath, 'get');
+    if (params) {
+
+      rb.query('challengeId', params.challengeId, {});
+
+    }
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<null | Array<TeacherExerciseCompactResponse>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiExercisesForTeacherGet$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiExercisesForTeacherGet(params?: {
+    challengeId?: string;
+
+  }): Observable<null | Array<TeacherExerciseCompactResponse>> {
+
+    return this.apiExercisesForTeacherGet$Response(params).pipe(
+      map((r: StrictHttpResponse<null | Array<TeacherExerciseCompactResponse>>) => r.body as null | Array<TeacherExerciseCompactResponse>)
     );
   }
 

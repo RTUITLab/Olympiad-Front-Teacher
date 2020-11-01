@@ -46,7 +46,7 @@ const appRoutes: Routes = [
   { path: 'teach/add-task', component: AddTaskPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-group', component: AddGroupPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/join-group/:id', component: JoinGroupComponent, canActivate: [AuthGuardService]},
-  { path: 'teach/task-check', component: TaskCheckPageComponent, canActivate: [AuthGuardService]}
+  { path: 'teach/course/:cid/group/:gid/exercise/:eid/user/:uid', component: TaskCheckPageComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

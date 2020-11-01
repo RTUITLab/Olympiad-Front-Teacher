@@ -1,4 +1,5 @@
 /* tslint:disable */
+import { Comment } from './comment';
 import { Exercise } from './exercise';
 import { SolutionBuildLog } from './solution-build-log';
 import { SolutionCheck } from './solution-check';
@@ -6,6 +7,7 @@ import { SolutionStatus } from './solution-status';
 import { User } from './user';
 export interface Solution {
   checkedTime?: null | string;
+  comments?: null | Array<Comment>;
   exercise?: Exercise | null;
   exerciseId?: string;
   id?: string;

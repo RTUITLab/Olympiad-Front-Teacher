@@ -1,9 +1,11 @@
 /* tslint:disable */
+import { Comment } from './comment';
 import { Solution } from './solution';
 import { UserToExercise } from './user-to-exercise';
 import { UserToGroup } from './user-to-group';
 export interface User {
   accessFailedCount?: number;
+  comments?: null | Array<Comment>;
   concurrencyStamp?: null | string;
   email?: null | string;
   emailConfirmed?: boolean;
