@@ -10,7 +10,7 @@ export class AuthGuardService implements CanActivate {
   constructor(private router: Router, private usersState: UserStateService) { }
 
   canActivate(): boolean {
-    const token = localStorage.getItem('userToken');
+    const token = localStorage.getItem('userToken') || environment.token;
 
     if (this.usersState.currentUser || token) {
       this.usersState.getMe(token)
