@@ -16,6 +16,11 @@ import { AddGroupPageComponent } from './add-group-page/add-group-page.component
 import { UserStateService } from './services/User/user-state.service';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardService } from './services/AuthGuard/auth-guard.service';
+import { TaskCheckPageComponent } from './task-check-page/task-check-page.component';
+import { MarkdownModule } from 'ngx-markdown';
+import { TaskCheckLogType1Component } from './task-check-log-type1/task-check-log-type1.component';
+import { TaskCheckLogType2Component } from './task-check-log-type2/task-check-log-type2.component';
+import { TaskCheckCommentComponent } from './task-check-comment/task-check-comment.component';
 import { CourseService } from './services/Course/course.service';
 import { GroupService } from './services/Group/group.service';
 import { FormsModule } from '@angular/forms';
@@ -40,6 +45,7 @@ const appRoutes: Routes = [
   { path: 'teach/add-task', component: AddTaskPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-group', component: AddGroupPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/join-group/:id', component: JoinGroupComponent, canActivate: [AuthGuardService]}
+  { path: 'teach/task-check', component: TaskCheckPageComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({
@@ -56,6 +62,10 @@ const appRoutes: Routes = [
     AddTaskPageComponent,
     AddGroupPageComponent,
     JoinGroupComponent
+    TaskCheckLogType1Component,
+    TaskCheckLogType2Component,
+    TaskCheckCommentComponent
+    TaskCheckPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +73,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
+    MarkdownModule.forRoot(),
   ],
   providers: [
     UserStateService,
