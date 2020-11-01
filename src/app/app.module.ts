@@ -30,6 +30,7 @@ import { ApiInterceptor } from './api.intercepter';
 import { forwardRef } from '@angular/core';
 import { Provider } from '@angular/core';
 import { JoinGroupComponent } from './join-group/join-group.component';
+import { ApiModule } from 'src/api/api.module';
 
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -73,7 +74,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    ApiModule.forRoot({ rootUrl: 'https://mycode.rtuitlab.dev' }),
   ],
   providers: [
     UserStateService,
