@@ -1,9 +1,10 @@
 /* tslint:disable */
 import { ChallengeAccessType } from './challenge-access-type';
-export interface ChallengeCreateRequest {
+export interface ChallengeCreateEditRequest {
   challengeAccessType?: ChallengeAccessType;
-  description?: null | string;
+  description: string;
   endTime?: null | string;
-  name?: null | string;
+  groupId?: null | string;
+  name: string;
   startTime?: null | string;
 }

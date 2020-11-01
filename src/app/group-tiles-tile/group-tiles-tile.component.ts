@@ -8,6 +8,7 @@ import { Group } from '../models/Group';
   styleUrls: ['./group-tiles-tile.component.css']
 })
 export class GroupTilesTileComponent implements OnInit {
+  shedule: Array<string>
 
   constructor() { }
   
@@ -15,6 +16,21 @@ export class GroupTilesTileComponent implements OnInit {
   @Input() group : GroupResponse;
 
   ngOnInit(): void {
+    this.shedule = [];
+    let week = [
+      'ПН',
+      'ВТ',
+      'СР',
+      'ЧТ',
+      'ПТ',
+      'СБ'
+    ]
+
+    this.group.lessonsTime.split("#").forEach((el, i, arr) => {
+      if (el && el !== 'null') {
+        this.shedule.push(week[i] + ' ' + el);
+      }
+    });
   }
 
 }

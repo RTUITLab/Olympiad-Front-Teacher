@@ -2,6 +2,7 @@
 import { Challenge } from './challenge';
 import { ExerciseData } from './exercise-data';
 import { Solution } from './solution';
+import { UserToExercise } from './user-to-exercise';
 export interface Exercise {
   challenge?: Challenge | null;
   challengeId?: string;
@@ -11,4 +12,5 @@ export interface Exercise {
   exerciseTask?: null | string;
   score?: number;
   solutions?: null | Array<Solution>;
+  userToExercises?: null | Array<UserToExercise>;
 }
