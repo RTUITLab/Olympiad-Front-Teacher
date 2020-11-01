@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
 import { CredentialsRequest } from '../models/credentials-request';
+import { LoginResponse } from '../models/login-response';
 
 @Injectable({
   providedIn: 'root',
@@ -81,7 +82,7 @@ export class AuthService extends BaseService {
    */
   apiAuthGetmeGet$Response(params?: {
 
-  }): Observable<StrictHttpResponse<void>> {
+  }): Observable<StrictHttpResponse<LoginResponse>> {
 
     const rb = new RequestBuilder(this.rootUrl, AuthService.ApiAuthGetmeGetPath, 'get');
     if (params) {
@@ -89,12 +90,12 @@ export class AuthService extends BaseService {
 
     }
     return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
+      responseType: 'json',
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+        return r as StrictHttpResponse<LoginResponse>;
       })
     );
   }
@@ -107,10 +108,10 @@ export class AuthService extends BaseService {
    */
   apiAuthGetmeGet(params?: {
 
-  }): Observable<void> {
+  }): Observable<LoginResponse> {
 
     return this.apiAuthGetmeGet$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
+      map((r: StrictHttpResponse<LoginResponse>) => r.body as LoginResponse)
     );
   }
 

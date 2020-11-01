@@ -231,7 +231,7 @@ export class AccountService extends BaseService {
   apiAccountDeleteUserStudentIdDelete$Response(params: {
     studentId: null | string;
 
-  }): Observable<StrictHttpResponse<void>> {
+  }): Observable<StrictHttpResponse<null | string>> {
 
     const rb = new RequestBuilder(this.rootUrl, AccountService.ApiAccountDeleteUserStudentIdDeletePath, 'delete');
     if (params) {
@@ -240,12 +240,12 @@ export class AccountService extends BaseService {
 
     }
     return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
+      responseType: 'json',
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+        return r as StrictHttpResponse<null | string>;
       })
     );
   }
@@ -259,10 +259,10 @@ export class AccountService extends BaseService {
   apiAccountDeleteUserStudentIdDelete(params: {
     studentId: null | string;
 
-  }): Observable<void> {
+  }): Observable<null | string> {
 
     return this.apiAccountDeleteUserStudentIdDelete$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
+      map((r: StrictHttpResponse<null | string>) => r.body as null | string)
     );
   }
 

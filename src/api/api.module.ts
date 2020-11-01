@@ -1,6 +1,6 @@
 /* tslint:disable */
 import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { AccountService } from './services/account.service';
@@ -9,12 +9,15 @@ import { AuthService } from './services/auth.service';
 import { ChallengesService } from './services/challenges.service';
 import { CheckService } from './services/check.service';
 import { CommentService } from './services/comment.service';
+import { CoursesService } from './services/courses.service';
 import { DumpService } from './services/dump.service';
 import { ExecutorService } from './services/executor.service';
 import { ExerciseDataService } from './services/exercise-data.service';
 import { ExercisesService } from './services/exercises.service';
+import { GroupsService } from './services/groups.service';
 import { RolesService } from './services/roles.service';
 import { UserGenerateService } from './services/user-generate.service';
+
 
 /**
  * Module that provides all services and configuration.
@@ -30,10 +33,12 @@ import { UserGenerateService } from './services/user-generate.service';
     ChallengesService,
     CheckService,
     CommentService,
+    CoursesService,
     DumpService,
     ExecutorService,
     ExerciseDataService,
     ExercisesService,
+    GroupsService,
     RolesService,
     UserGenerateService,
     ApiConfiguration

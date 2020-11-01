@@ -15,25 +15,6 @@ export class CourseService {
   }
 
   public getCourse(id: string): Promise<Course> {
-    return new Promise<Course>((resolve, reject) => {
-      let a = new Array<Course>();
-      a.push({
-        id: '12345',
-        title: 'qwer',
-        groupCount: '2'
-      });
-      a.push({
-        id: '34567',
-        title: 'dfg',
-        groupCount: '4'
-      });
-      a.push({
-        id: '2345',
-        title: 'fghj',
-        groupCount: '3'
-      });
-      resolve(a.find(C => C.id === id));
-    })
-    //return this.http.get<Course>(Api.getCourse(id), this.usersState.authOptions).toPromise();
+    return this.http.get<Course>(Api.getCourse(id), this.usersState.authOptions).toPromise();
   }
 }

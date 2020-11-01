@@ -19,7 +19,7 @@ export class GroupTilesPageComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.groupService.getGroupsList().then((groups) => {
+    this.groupService.getGroupsList(id).then((groups) => {
       this.groups = groups;
     })
   }

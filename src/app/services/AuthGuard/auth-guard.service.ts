@@ -17,6 +17,7 @@ export class AuthGuardService implements CanActivate {
         .subscribe(success => {
           if (!success) {
             window.location.href = environment.redirectUrl;
+            console.log("REDIRECT FROM GUARD");
           }
         });
       return true;

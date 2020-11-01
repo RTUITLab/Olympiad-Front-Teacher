@@ -147,7 +147,7 @@ export class CheckService extends BaseService {
   apiCheckRecheckExerciseIdAdminPanelPost$Response(params: {
     exerciseId: string;
 
-  }): Observable<StrictHttpResponse<void>> {
+  }): Observable<StrictHttpResponse<number>> {
 
     const rb = new RequestBuilder(this.rootUrl, CheckService.ApiCheckRecheckExerciseIdAdminPanelPostPath, 'post');
     if (params) {
@@ -156,12 +156,12 @@ export class CheckService extends BaseService {
 
     }
     return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
+      responseType: 'json',
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+        return (r as HttpResponse<any>).clone({ body: parseFloat(String((r as HttpResponse<any>).body)) }) as StrictHttpResponse<number>;
       })
     );
   }
@@ -175,10 +175,10 @@ export class CheckService extends BaseService {
   apiCheckRecheckExerciseIdAdminPanelPost(params: {
     exerciseId: string;
 
-  }): Observable<void> {
+  }): Observable<number> {
 
     return this.apiCheckRecheckExerciseIdAdminPanelPost$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
+      map((r: StrictHttpResponse<number>) => r.body as number)
     );
   }
 
@@ -196,7 +196,7 @@ export class CheckService extends BaseService {
   apiCheckRecheckExerciseIdPost$Response(params: {
     exerciseId: string;
 
-  }): Observable<StrictHttpResponse<void>> {
+  }): Observable<StrictHttpResponse<number>> {
 
     const rb = new RequestBuilder(this.rootUrl, CheckService.ApiCheckRecheckExerciseIdPostPath, 'post');
     if (params) {
@@ -205,12 +205,12 @@ export class CheckService extends BaseService {
 
     }
     return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
+      responseType: 'json',
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+        return (r as HttpResponse<any>).clone({ body: parseFloat(String((r as HttpResponse<any>).body)) }) as StrictHttpResponse<number>;
       })
     );
   }
@@ -224,10 +224,10 @@ export class CheckService extends BaseService {
   apiCheckRecheckExerciseIdPost(params: {
     exerciseId: string;
 
-  }): Observable<void> {
+  }): Observable<number> {
 
     return this.apiCheckRecheckExerciseIdPost$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
+      map((r: StrictHttpResponse<number>) => r.body as number)
     );
   }
 
@@ -245,7 +245,7 @@ export class CheckService extends BaseService {
   apiCheckRechecksolutionSolutionIdPost$Response(params: {
     solutionId: string;
 
-  }): Observable<StrictHttpResponse<void>> {
+  }): Observable<StrictHttpResponse<number>> {
 
     const rb = new RequestBuilder(this.rootUrl, CheckService.ApiCheckRechecksolutionSolutionIdPostPath, 'post');
     if (params) {
@@ -254,12 +254,12 @@ export class CheckService extends BaseService {
 
     }
     return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
+      responseType: 'json',
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+        return (r as HttpResponse<any>).clone({ body: parseFloat(String((r as HttpResponse<any>).body)) }) as StrictHttpResponse<number>;
       })
     );
   }
@@ -273,10 +273,10 @@ export class CheckService extends BaseService {
   apiCheckRechecksolutionSolutionIdPost(params: {
     solutionId: string;
 
-  }): Observable<void> {
+  }): Observable<number> {
 
     return this.apiCheckRechecksolutionSolutionIdPost$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
+      map((r: StrictHttpResponse<number>) => r.body as number)
     );
   }
 
@@ -294,7 +294,7 @@ export class CheckService extends BaseService {
   apiCheckRecheckusersolutionStudentIdPost$Response(params: {
     studentId: null | string;
 
-  }): Observable<StrictHttpResponse<void>> {
+  }): Observable<StrictHttpResponse<number>> {
 
     const rb = new RequestBuilder(this.rootUrl, CheckService.ApiCheckRecheckusersolutionStudentIdPostPath, 'post');
     if (params) {
@@ -303,12 +303,12 @@ export class CheckService extends BaseService {
 
     }
     return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
+      responseType: 'json',
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+        return (r as HttpResponse<any>).clone({ body: parseFloat(String((r as HttpResponse<any>).body)) }) as StrictHttpResponse<number>;
       })
     );
   }
@@ -322,10 +322,10 @@ export class CheckService extends BaseService {
   apiCheckRecheckusersolutionStudentIdPost(params: {
     studentId: null | string;
 
-  }): Observable<void> {
+  }): Observable<number> {
 
     return this.apiCheckRecheckusersolutionStudentIdPost$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
+      map((r: StrictHttpResponse<number>) => r.body as number)
     );
   }
 

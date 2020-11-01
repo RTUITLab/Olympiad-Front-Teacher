@@ -11,7 +11,7 @@ export class GroupService {
 
   constructor(private http: HttpClient, private usersState: UserStateService) { }
 
-  public getGroupsList(): Promise<Array<Group>> {
+  public getGroupsList(id): Promise<Array<Group>> {
     return new Promise((resolve, reject) => {
       let a = new Array<Group>();
       a.push({

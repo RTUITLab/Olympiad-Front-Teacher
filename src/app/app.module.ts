@@ -14,15 +14,27 @@ import { GroupCheckPageComponent } from './group-check-page/group-check-page.com
 import { AddTaskPageComponent } from './add-task-page/add-task-page.component';
 import { AddGroupPageComponent } from './add-group-page/add-group-page.component';
 import { UserStateService } from './services/User/user-state.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardService } from './services/AuthGuard/auth-guard.service';
 import { CourseService } from './services/Course/course.service';
 import { GroupService } from './services/Group/group.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import {ReactiveFormsModule} from '@angular/forms';
+import { ApiInterceptor } from './api.intercepter';
+import { forwardRef } from '@angular/core';
+import { Provider } from '@angular/core';
+
+export const API_INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useExisting: forwardRef(() => ApiInterceptor),
+  multi: true
+};
 
 const appRoutes: Routes = [
   { path: 'teach', component: CourseTilesPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/course/:id', component: GroupTilesPageComponent, canActivate: [AuthGuardService]},
-  { path: 'teach/group-overview', component: GroupOverviewPageComponent, canActivate: [AuthGuardService]},
+  { path: 'teach/group/:id', component: GroupOverviewPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/group-check', component: GroupCheckPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-task', component: AddTaskPageComponent, canActivate: [AuthGuardService]},
   { path: 'teach/add-group', component: AddGroupPageComponent, canActivate: [AuthGuardService]}
@@ -45,13 +57,17 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     UserStateService,
     AuthGuardService,
     CourseService,
-    GroupService
+    GroupService,
+    ApiInterceptor,
+    API_INTERCEPTOR_PROVIDER
   ],
   bootstrap: [AppComponent]
 })

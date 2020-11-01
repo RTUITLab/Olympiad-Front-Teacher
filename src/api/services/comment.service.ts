@@ -8,6 +8,7 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
+import { CommentResponce } from '../models/comment-responce';
 
 @Injectable({
   providedIn: 'root',
@@ -80,7 +81,7 @@ export class CommentService extends BaseService {
   apiCommentPageNumGet$Response(params: {
     pageNum: number;
 
-  }): Observable<StrictHttpResponse<void>> {
+  }): Observable<StrictHttpResponse<null | Array<CommentResponce>>> {
 
     const rb = new RequestBuilder(this.rootUrl, CommentService.ApiCommentPageNumGetPath, 'get');
     if (params) {
@@ -89,12 +90,12 @@ export class CommentService extends BaseService {
 
     }
     return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
+      responseType: 'json',
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+        return r as StrictHttpResponse<null | Array<CommentResponce>>;
       })
     );
   }
@@ -108,10 +109,10 @@ export class CommentService extends BaseService {
   apiCommentPageNumGet(params: {
     pageNum: number;
 
-  }): Observable<void> {
+  }): Observable<null | Array<CommentResponce>> {
 
     return this.apiCommentPageNumGet$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
+      map((r: StrictHttpResponse<null | Array<CommentResponce>>) => r.body as null | Array<CommentResponce>)
     );
   }
 
